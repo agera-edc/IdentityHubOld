@@ -24,5 +24,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WebNodeInterface'
+        type:
+          type: string
     WebNodeInterface:
       type: object

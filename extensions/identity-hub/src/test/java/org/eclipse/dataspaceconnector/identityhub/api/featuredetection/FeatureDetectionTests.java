@@ -28,7 +28,7 @@ public class FeatureDetectionTests {
 
     @Test
     void featureDetectionTest() {
-        var expectedFeatureDetection = new FeatureDetection().interfaces(new ArrayList<>());
+        var expectedFeatureDetection = new FeatureDetection().type("FeatureDetection").interfaces(new ArrayList<>());
         var response = featureDetectionClient.featureDetection();
         assertThat(response).usingRecursiveComparison().isEqualTo(expectedFeatureDetection);
     }

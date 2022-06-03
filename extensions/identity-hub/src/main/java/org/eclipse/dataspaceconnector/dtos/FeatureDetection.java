@@ -12,7 +12,7 @@ public class FeatureDetection {
 
     private List<WebNodeInterface> interfaces;
 
-    public String type() {
+    public String getType() {
         return type;
     }
 
