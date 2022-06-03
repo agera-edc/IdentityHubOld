@@ -1,13 +1,13 @@
 openapi: 3.0.1
 info:
-  title: Eclipse Dataspace Connector Registration Service
+  title: Eclipse Dataspace Connector Identity Hub
   version: 0.0.1
 paths:
-  /health:
+  /featuredetection:
     get:
       tags:
-      - Health
-      operationId: healthy
+      - FeatureDetection
+      operationId: featureDetection
       responses:
         default:
           description: default response

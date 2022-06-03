@@ -3,7 +3,7 @@
 It is possible to generate an OpenApi spec in the form of a `*.yaml` file by invoking a Gradle
 task.
 
-The file is at `resources/openapi/yaml/registration-service.yaml`.
+The file is at `resources/openapi/yaml/identity-hub.yaml`.
 
 ## Generate OpenAPI `yaml` file
 

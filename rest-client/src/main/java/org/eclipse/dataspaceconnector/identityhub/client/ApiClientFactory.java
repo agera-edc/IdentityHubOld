@@ -12,7 +12,7 @@
  *
  */
 
-package org.eclipse.dataspaceconnector.registration.client;
+package org.eclipse.dataspaceconnector.identityhub.client;
 
 /**
  * Factory class for {@link ApiClient}.

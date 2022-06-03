@@ -24,16 +24,16 @@ plugins {
 // Configure OpenAPI Generator
 tasks.withType(org.openapitools.generator.gradle.plugin.tasks.GenerateTask::class.java) {
     generatorName.value("java")
-    inputSpec.value(file("$rootDir/resources/openapi/yaml/registration-service.yaml").absolutePath)
+    inputSpec.value(file("$rootDir/resources/openapi/yaml/identity-hub.yaml").absolutePath)
     validateSpec.value(false)
     configOptions.set(
         mapOf(
             "library" to "native",
             "dateLibrary" to "legacy",
             "useRuntimeException" to "true",
-            "invokerPackage" to "org.eclipse.dataspaceconnector.registration.client",
-            "apiPackage" to "org.eclipse.dataspaceconnector.registration.client.api",
-            "modelPackage" to "org.eclipse.dataspaceconnector.registration.client.models",
+            "invokerPackage" to "org.eclipse.dataspaceconnector.identityhub.client",
+            "apiPackage" to "org.eclipse.dataspaceconnector.identityhub.client.api",
+            "modelPackage" to "org.eclipse.dataspaceconnector.identityhub.client.models",
         )
     )
 }
