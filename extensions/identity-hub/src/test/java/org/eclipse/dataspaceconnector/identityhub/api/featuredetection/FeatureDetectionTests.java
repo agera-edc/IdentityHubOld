@@ -8,7 +8,6 @@ import org.eclipse.dataspaceconnector.junit.launcher.EdcRuntimeExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

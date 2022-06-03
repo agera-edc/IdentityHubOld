@@ -11,18 +11,18 @@ import java.util.Objects;
 @JsonDeserialize(builder = FeatureDetection.Builder.class)
 public class FeatureDetection {
     private static final String type = "FeatureDetection";
-    private List<Object> interfaces;
+
+    private List<WebNodeInterface> interfaces;
 
     public String type() {
         return type;
     }
 
-    public List<Object> getInterfaces() {
+    public List<WebNodeInterface> getInterfaces() {
         return interfaces;
     }
 
     private FeatureDetection() {
-        // TODO: Implement interface data model https://identity.foundation/decentralized-web-node/spec/#interfaces
         interfaces = new ArrayList<>();
     }
 
@@ -38,7 +38,7 @@ public class FeatureDetection {
             return new FeatureDetection.Builder();
         }
 
-        public FeatureDetection.Builder interfaces(List<Object> interfaces) {
+        public FeatureDetection.Builder interfaces(List<WebNodeInterface> interfaces) {
             featureDetection.interfaces = interfaces;
             return this;
         }
