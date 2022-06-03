@@ -23,4 +23,6 @@ components:
         interfaces:
           type: array
           items:
-            type: object
+            $ref: '#/components/schemas/WebNodeInterface'
+    WebNodeInterface:
+      type: object
