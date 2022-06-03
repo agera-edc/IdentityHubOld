@@ -6,11 +6,11 @@ In order to be able to compile and run this project, you need to follow the inst
 
 ### Publish DataspaceConnector artifact
 IdentityHub import dependencies from the [eclipse DataSpaceConnector](https://github.com/eclipse-dataspaceconnector/DataSpaceConnector) project.
-You need publish the DataSpaceConnector artifact locally:
+You need to clone the [eclipse DataSpaceConnector](https://github.com/eclipse-dataspaceconnector/DataSpaceConnector) repository, and publish the DataSpaceConnector artifact locally:
 
 ```bash
 cd <DataSpaceConnector-root-folder>
-checkout 5191d3e6dd9ac5d78264d05ae69edb4d297b606a
+git checkout 5191d3e6dd9ac5d78264d05ae69edb4d297b606a # Use same commit as CD pipeline to make sure it is compatible with the EDC version
 ./gradlew publishToMavenLocal -Pskip.signing
 ```
 
