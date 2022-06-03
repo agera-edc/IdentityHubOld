@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @JsonDeserialize(builder = FeatureDetection.Builder.class)
@@ -17,7 +18,7 @@ public class FeatureDetection {
     }
 
     public List<WebNodeInterface> getInterfaces() {
-        return interfaces;
+        return Collections.unmodifiableList(interfaces);
     }
 
     private FeatureDetection() {
