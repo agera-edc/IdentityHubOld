@@ -6,6 +6,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.dataspaceconnector.dtos.FeatureDetection;
 
 /**
  * API controller to provide Feature Detection object.
@@ -17,7 +18,7 @@ import jakarta.ws.rs.core.Response;
 public class FeatureDetectionController {
 
     @GET
-    public Response featureDetection() {
-        return Response.ok().build();
+    public FeatureDetection featureDetection() {
+        return new FeatureDetection.Builder().build();
     }
 }

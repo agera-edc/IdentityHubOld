@@ -12,4 +12,15 @@ paths:
         default:
           description: default response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureDetection'
+components:
+  schemas:
+    FeatureDetection:
+      type: object
+      properties:
+        interfaces:
+          type: array
+          items:
+            type: object

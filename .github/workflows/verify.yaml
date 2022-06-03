@@ -22,3 +22,19 @@ jobs:
       - name: Check OpenAPI definition match code
         run: git diff --exit-code
 
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ./.github/actions/gradle-setup
+
+      - name: 'Tests'
+        run: ./gradlew test
+        timeout-minutes: 10
+
+      - name: 'Publish Test Results'
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: "**/test-results/**/*.xml"
