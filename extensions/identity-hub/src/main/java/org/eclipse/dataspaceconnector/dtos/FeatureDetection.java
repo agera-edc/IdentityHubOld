@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Feature Detection object produced by a compliant decentralized Web Node.
+ * See: <a href="https://identity.foundation/decentralized-web-node/spec/#feature-detection">Feature detection identity foundation documentation.</a>
+ */
 @JsonDeserialize(builder = FeatureDetection.Builder.class)
 public class FeatureDetection {
     private static final String type = "FeatureDetection";
