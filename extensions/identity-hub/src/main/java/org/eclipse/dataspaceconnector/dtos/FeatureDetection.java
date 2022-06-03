@@ -2,11 +2,9 @@ package org.eclipse.dataspaceconnector.dtos;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import org.eclipse.dataspaceconnector.policy.model.Policy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @JsonDeserialize(builder = FeatureDetection.Builder.class)
 public class FeatureDetection {
