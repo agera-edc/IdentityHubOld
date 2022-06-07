@@ -22,7 +22,7 @@ public class FeatureDetectionTests {
             Map.of()
     );
 
-    final String API_URL = "http://localhost:8181/api";
+    static final String API_URL = "http://localhost:8181/api";
     ApiClient apiClient = ApiClientFactory.createApiClient(API_URL);
     FeatureDetectionApi featureDetectionClient = new FeatureDetectionApi(apiClient);
 
