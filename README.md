@@ -2,9 +2,9 @@
 
 Temporary repository to get started with the Identity Hub for the MVD.
 
-## Run identity Hub locally
+## Run and develop identity Hub locally
 
-In order to be able to compile and run this project, you need to follow the instructions below:
+In order to be able to develop and run this project, you need to follow the instructions below:
 
 ### Publish DataspaceConnector artifact
 
