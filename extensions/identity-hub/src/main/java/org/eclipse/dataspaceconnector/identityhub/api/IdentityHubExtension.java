@@ -15,7 +15,9 @@ public class IdentityHubExtension implements ServiceExtension {
 
     @Override
     public void initialize(ServiceExtensionContext context) {
-        var controller = new FeatureDetectionController();
-        webService.registerResource(controller);
+        var featureDetectionController = new FeatureDetectionController();
+        var identityHubController = new IdentityHubController();
+        webService.registerResource(featureDetectionController);
+        webService.registerResource(identityHubController);
     }
 }
