@@ -1,8 +1,8 @@
 package org.eclipse.dataspaceconnector.dtos;
 
 public class MessageRequestObject {
-    Descriptor descriptor;
-    String data;
+    private final Descriptor descriptor;
+    private final String data;
 
     public MessageRequestObject(Descriptor descriptor, String data) {
         this.descriptor = descriptor;

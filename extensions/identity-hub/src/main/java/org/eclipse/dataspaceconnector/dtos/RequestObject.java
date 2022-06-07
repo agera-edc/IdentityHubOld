@@ -3,9 +3,9 @@ package org.eclipse.dataspaceconnector.dtos;
 import java.util.List;
 
 public class RequestObject {
-    String requestId;
-    String target;
-    List<MessageRequestObject> messages;
+    private final String requestId;
+    private final String target;
+    private final List<MessageRequestObject> messages;
 
     public RequestObject(String requestId, String target, List<MessageRequestObject> messages) {
         this.requestId = requestId;

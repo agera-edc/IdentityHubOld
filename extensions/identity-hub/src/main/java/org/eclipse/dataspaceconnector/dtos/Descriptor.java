@@ -1,10 +1,10 @@
 package org.eclipse.dataspaceconnector.dtos;
 
 public class Descriptor {
-    String method;
-    String nonce;
-    String dataCid;
-    String dataFormat;
+    private final String method;
+    private final String nonce;
+    private final String dataCid;
+    private final String dataFormat;
 
     public Descriptor(String method, String nonce, String dataCid, String dataFormat) {
         this.method = method;
