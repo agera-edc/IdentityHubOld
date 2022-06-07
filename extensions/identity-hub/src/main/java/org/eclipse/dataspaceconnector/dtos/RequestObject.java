@@ -5,9 +5,9 @@ import java.util.List;
 public class RequestObject {
     String requestId;
     String target;
-    List<MessageObject> messages;
+    List<MessageRequestObject> messages;
 
-    public RequestObject(String requestId, String target, List<MessageObject> messages) {
+    public RequestObject(String requestId, String target, List<MessageRequestObject> messages) {
         this.requestId = requestId;
         this.target = target;
         this.messages = messages;
@@ -21,7 +21,7 @@ public class RequestObject {
         return target;
     }
 
-    public List<MessageObject> getMessages() {
+    public List<MessageRequestObject> getMessages() {
         return messages;
     }
 }
