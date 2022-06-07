@@ -5,16 +5,14 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
-import org.eclipse.dataspaceconnector.dtos.HubObject;
 import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
 import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
 import org.eclipse.dataspaceconnector.dtos.ResponseObject;
 import org.eclipse.dataspaceconnector.dtos.Status;
-import org.eclipse.dataspaceconnector.dtos.VerifiableCredential;
-import org.jetbrains.annotations.NotNull;
+import org.eclipse.dataspaceconnector.service.MethodProcessor;
+import org.eclipse.dataspaceconnector.service.MethodProcessorFactory;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,8 +22,10 @@ import java.util.stream.Collectors;
 @Path("/identity-hub")
 public class IdentityHubController {
 
+    private final MethodProcessorFactory methodProcessorFactory = new MethodProcessorFactory();
+
     @POST
-    public ResponseObject get(RequestObject requestObject) {
+    public ResponseObject handleRequest(RequestObject requestObject) {
         List<MessageResultObject> replies = requestObject.getMessages()
                 .stream()
                 .map(this::processMessage)
@@ -39,19 +39,9 @@ public class IdentityHubController {
 
     private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {
         String method = messageRequestObject.getDescriptor().getMethod();
-
-        // dispatch message to corresponding method processor (TBD)
-        List<HubObject> entries = processMethod();
-
-        return new MessageResultObject("messageId",
-                new Status("200", ""),
-                entries);
-
+        MethodProcessor processor = methodProcessorFactory.create(method);
+        return processor.process(messageRequestObject.getData());
     }
 
-    @NotNull
-    private List<HubObject> processMethod() {
-        return List.of(new VerifiableCredential(), new VerifiableCredential());
-    }
 }
 
