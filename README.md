@@ -20,4 +20,5 @@ git checkout 5191d3e6dd9ac5d78264d05ae69edb4d297b606a
 
 ### Generate open api and client
 
-To be able to compile and run this project, you need to follow the [open api instructions](docs/developer/openapi.md) to generate the OpenAPI `yaml` file and generate a REST client.
+When developing locally, in order to avoid having errors in your IDE, you need to follow the [open api instructions](docs/developer/openapi.md) to generate the OpenAPI `yaml` file and generate a REST client.
+If you change the contract of an endpoint or add a new one, you will need to re-generate the OpenApi `yaml` and the REST client.
