@@ -42,7 +42,7 @@ public class FeatureDetection {
         }
 
         public FeatureDetection.Builder interfaces(List<WebNodeInterface> interfaces) {
-            featureDetection.interfaces = interfaces;
+            featureDetection.interfaces.addAll(interfaces);
             return this;
         }
 
