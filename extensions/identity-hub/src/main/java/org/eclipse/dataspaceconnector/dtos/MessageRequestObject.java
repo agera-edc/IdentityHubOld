@@ -1,5 +1,8 @@
 package org.eclipse.dataspaceconnector.dtos;
 
+/**
+ * See <a href="https://identity.foundation/decentralized-web-node/spec/#messages">Message documentation</a>
+ */
 public class MessageRequestObject {
     private Descriptor descriptor;
     private String data;

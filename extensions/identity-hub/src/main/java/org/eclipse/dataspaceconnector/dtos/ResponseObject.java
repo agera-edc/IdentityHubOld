@@ -3,7 +3,7 @@ package org.eclipse.dataspaceconnector.dtos;
 import java.util.List;
 
 /**
- * See https://identity.foundation/decentralized-web-node/spec/#response-objects
+ * See <a href="https://identity.foundation/decentralized-web-node/spec/#response-objects">Response Object documentation</a>
  */
 public class ResponseObject {
     private final String requestId;

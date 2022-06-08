@@ -3,7 +3,8 @@ package org.eclipse.dataspaceconnector.dtos;
 import java.util.List;
 
 /**
- * See https://identity.foundation/decentralized-web-node/spec/#response-objects
+ * See <a href="https://identity.foundation/decentralized-web-node/spec/#response-objects">Response Object documentation</a>
+ * and <a href="https://identity.foundation/decentralized-web-node/spec/#messages">message documentation</a>.
  */
 public class MessageResultObject {
     private final String messageId;

@@ -2,6 +2,9 @@ package org.eclipse.dataspaceconnector.dtos;
 
 import java.util.List;
 
+/**
+ * See <a href="https://identity.foundation/decentralized-web-node/spec/#request-objects">Request Object documentation</a>
+ */
 public class RequestObject {
 
     private String requestId;
