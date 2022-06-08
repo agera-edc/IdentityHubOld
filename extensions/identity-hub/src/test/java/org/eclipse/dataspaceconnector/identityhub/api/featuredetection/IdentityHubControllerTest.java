@@ -41,7 +41,10 @@ public class IdentityHubControllerTest {
         var requestObject = RequestObject.Builder.newInstance()
                 .requestId(requestId)
                 .target("target")
-                .addMessageRequestObject(new MessageRequestObject(new Descriptor("Not supported", "", "", ""), ""))
+                .addMessageRequestObject(
+                        MessageRequestObject.Builder.newInstance()
+                                .descriptor(new Descriptor("Not supported", "", "", ""))
+                                .build())
                 .build();
 
         baseRequest()
