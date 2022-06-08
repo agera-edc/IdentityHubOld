@@ -1,0 +1,23 @@
+@startuml
+autonumber "<b>0'.'"
+box "Company1" #LightBlue
+Participant Company1
+Participant "Company1\nDID Document &\nSelf-description\nDocument" as DID1
+Participant "Company1\nIdentity Hub" as IDHUB1
+end box
+box "Dataspace Authority" #LightYellow
+Participant "DA API" as DA
+end box
+
+Company1 -> DA ++: Call enrollment endpoint
+group authorization
+    DA -> DID1: Get DID Document (contains Identity Hub URL)
+    DA -> IDHUB1: Get credentials
+end
+
+DA -> DA: apply enrollment policy
+DA -> DA: Sign membership certificate
+DA -> IDHUB1 ++: signed membership credential
+IDHUB1 -> IDHUB1: Store membership credential
+
+@enduml
