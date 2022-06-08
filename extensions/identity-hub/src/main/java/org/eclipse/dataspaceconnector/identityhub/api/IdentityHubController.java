@@ -14,6 +14,7 @@ import org.eclipse.dataspaceconnector.service.MethodProcessor;
 import org.eclipse.dataspaceconnector.service.MethodProcessorFactory;
 import org.eclipse.dataspaceconnector.store.IdentityHubStore;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,7 @@ public class IdentityHubController {
     private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {
         String method = messageRequestObject.getDescriptor().getMethod();
         MethodProcessor processor = methodProcessorFactory.create(method);
-        return processor.process(messageRequestObject.getData());
+        return processor.process(messageRequestObject.getData().getBytes(StandardCharsets.UTF_8));
     }
 
 }

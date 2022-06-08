@@ -5,7 +5,10 @@ package org.eclipse.dataspaceconnector.dtos;
  */
 public class MessageRequestObject {
     private Descriptor descriptor;
+    // TODO: Change data type to byte[]
     private String data;
+
+    public MessageRequestObject() {}
 
     public MessageRequestObject(Descriptor descriptor, String data) {
         this.descriptor = descriptor;

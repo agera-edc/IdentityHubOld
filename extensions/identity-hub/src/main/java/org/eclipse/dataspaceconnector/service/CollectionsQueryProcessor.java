@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CollectionsQueryProcessor implements MethodProcessor {
     @Override
-    public MessageResultObject process(String data) {
+    public MessageResultObject process(byte[] data) {
         List<HubObject> entries = List.of(new VerifiableCredential(), new VerifiableCredential());
         return new MessageResultObject("messageId",
                 MessageStatus.OK,
