@@ -38,9 +38,11 @@ public class IdentityHubControllerTest {
     @Test
     void invalidMessageMethod() {
         String requestId = "id";
-        RequestObject requestObject = new RequestObject(requestId, "target", List.of(
-                new MessageRequestObject(new Descriptor("Not supported", "", "", ""), "")
-        ));
+        var requestObject = RequestObject.Builder.newInstance()
+                .requestId(requestId)
+                .target("target")
+                .addMessageRequestObject(new MessageRequestObject(new Descriptor("Not supported", "", "", ""), ""))
+                .build();
 
         baseRequest()
             .body(requestObject)
