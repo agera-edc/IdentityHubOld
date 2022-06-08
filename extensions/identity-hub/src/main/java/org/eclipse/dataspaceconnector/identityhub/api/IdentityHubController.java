@@ -12,7 +12,6 @@ import org.eclipse.dataspaceconnector.dtos.ResponseObject;
 import org.eclipse.dataspaceconnector.dtos.RequestStatus;
 import org.eclipse.dataspaceconnector.service.MethodProcessor;
 import org.eclipse.dataspaceconnector.service.MethodProcessorFactory;
-import org.eclipse.dataspaceconnector.store.IdentityHubStore;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,12 +22,10 @@ import java.util.stream.Collectors;
 @Path("/identity-hub")
 public class IdentityHubController {
 
-    private IdentityHubStore identityHubStore;
     private final MethodProcessorFactory methodProcessorFactory;
 
-    public IdentityHubController(IdentityHubStore identityHubStore) {
-        this.identityHubStore = identityHubStore;
-        this.methodProcessorFactory = new MethodProcessorFactory(identityHubStore);
+    public IdentityHubController(MethodProcessorFactory methodProcessorFactory) {
+        this.methodProcessorFactory = methodProcessorFactory;
     }
 
     @POST
