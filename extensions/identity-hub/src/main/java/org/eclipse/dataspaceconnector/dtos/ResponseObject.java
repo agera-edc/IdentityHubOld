@@ -7,10 +7,10 @@ import java.util.List;
  */
 public class ResponseObject {
     private final String requestId;
-    private final Status status;
+    private final RequestStatus status;
     private final List<MessageResultObject> replies;
 
-    public ResponseObject(String requestId, Status status, List<MessageResultObject> replies) {
+    public ResponseObject(String requestId, RequestStatus status, List<MessageResultObject> replies) {
         this.requestId = requestId;
         this.status = status;
         this.replies = replies;
@@ -20,7 +20,7 @@ public class ResponseObject {
         return requestId;
     }
 
-    public Status getStatus() {
+    public RequestStatus getStatus() {
         return status;
     }
 

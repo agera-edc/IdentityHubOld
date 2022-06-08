@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class MessageResultObject {
     private final String messageId;
-    private final Status status;
+    private final MessageStatus status;
     private final List<HubObject> entries;
 
-    public MessageResultObject(String requestId, Status status, List<HubObject> entries) {
+    public MessageResultObject(String requestId, MessageStatus status, List<HubObject> entries) {
         this.messageId = requestId;
         this.status = status;
         this.entries = entries;
@@ -21,7 +21,7 @@ public class MessageResultObject {
         return messageId;
     }
 
-    public Status getStatus() {
+    public MessageStatus getStatus() {
         return status;
     }
 

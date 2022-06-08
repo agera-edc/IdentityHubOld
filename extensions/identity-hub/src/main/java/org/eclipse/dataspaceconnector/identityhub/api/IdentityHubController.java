@@ -9,7 +9,7 @@ import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
 import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
 import org.eclipse.dataspaceconnector.dtos.ResponseObject;
-import org.eclipse.dataspaceconnector.dtos.Status;
+import org.eclipse.dataspaceconnector.dtos.RequestStatus;
 import org.eclipse.dataspaceconnector.service.MethodProcessor;
 import org.eclipse.dataspaceconnector.service.MethodProcessorFactory;
 
@@ -31,10 +31,7 @@ public class IdentityHubController {
                 .map(this::processMessage)
                 .collect(Collectors.toList());
 
-        return new ResponseObject(
-                requestObject.getRequestId(),
-                new Status("200", ""),
-                replies);
+        return new ResponseObject(requestObject.getRequestId(), RequestStatus.OK, replies);
     }
 
     private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {
