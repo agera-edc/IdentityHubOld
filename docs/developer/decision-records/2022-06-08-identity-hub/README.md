@@ -1,6 +1,6 @@
-# Identity Hub ADR
+# Identity Hub
 
-An identity hub is a credential storage and message relay system run by a dataspace participant. In particular, the identity hub will be used to securely deliver [verifiable credentials](https://www.w3.org/TR/vc-data-model/#what-is-a-verifiable-credential) from a dataspace issuer to a dataspace participant. The hub will also be used to provide verifiable presentations on behalf of a participant.
+An identity hub is a credential storage and message relay system run by a dataspace participant. In particular, the identity hub will be used to securely deliver [verifiable credentials](https://www.w3.org/TR/vc-data-model/#what-is-a-verifiable-credential) from a dataspace issuer to a dataspace participant. The hub will also be used to provide [verifiable presentations](https://www.w3.org/TR/vc-data-model/#presentations) on behalf of a participant. The Identity Hub will not be used as a message relay system.
 
 The [Identity Hub specification](https://github.com/Metaform/mvd/blob/main/identity-hub/identity-hub-tech-spec.md) provides an extensive description of different aspects that need to be supported by the Identity Hub in its final version. This document focuses on what the first version of the Identity Hub will have to support to enable the MVD (Minimum Viable Dataspace).
 
