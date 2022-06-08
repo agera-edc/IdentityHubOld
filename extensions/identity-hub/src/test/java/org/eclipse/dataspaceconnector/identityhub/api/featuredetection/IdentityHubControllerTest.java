@@ -76,10 +76,9 @@ public class IdentityHubControllerTest {
         MessageRequestObject message = new MessageRequestObject(descriptor, data);
         var messages = List.of(message);
         RequestObject requestObject = new RequestObject("id", "target", messages);
-        String serializedRequestObject = mapper.writeValueAsString(requestObject);
 
         var result = baseRequest()
-                .body(serializedRequestObject)
+                .body(requestObject)
                 .post()
                 .then()
                 .statusCode(200);
