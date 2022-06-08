@@ -12,7 +12,8 @@ end box
 ParticipantA -> B ++: Request:\n - DID JWS
 activate ParticipantA
 group authorize request
-  B -> DID: Get DID Document (contains Identity Hub URL)
+  B -> DID ++: Get DID Document (contains Identity Hub URL)
+  return DID Document
   B -> B: Verify JWS
   B -> IDHUB ++: Get credentials
   return Verifiable Credentials
