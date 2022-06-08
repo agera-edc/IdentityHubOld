@@ -15,8 +15,8 @@ group authorize request
   B -> DID ++: Get DID Document (contains Identity Hub URL)
   return DID Document
   B -> B: Verify JWS
-  B -> IDHUB ++: Get credentials
-  return Verifiable Credentials
+  B -> IDHUB ++: Get Verifiable Presentation
+  return Verifiable Presentation
   B -> B: apply access policy
 end
 return response
