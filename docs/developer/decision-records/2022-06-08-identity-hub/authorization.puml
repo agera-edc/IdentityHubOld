@@ -15,9 +15,6 @@ group authorize request
   B -> DID: Get DID Document (contains Identity Hub URL)
   B -> B: Verify JWS
   B -> IDHUB ++: Get credentials
-  group authorize request
-    IDHUB -> IDHUB: Verify token
-  end
   return Verifiable Credentials
   B -> B: apply access policy
 end

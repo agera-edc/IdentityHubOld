@@ -17,7 +17,7 @@ end
 
 DA -> DA: apply enrollment policy
 DA -> DA: Sign membership certificate
-DA -> IDHUB1 ++: signed membership credential
+DA -> IDHUB1 ++: Push membership credential
 IDHUB1 -> IDHUB1: Store membership credential
 
 @enduml
