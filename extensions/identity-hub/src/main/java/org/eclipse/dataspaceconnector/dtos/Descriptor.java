@@ -1,10 +1,10 @@
 package org.eclipse.dataspaceconnector.dtos;
 
 public class Descriptor {
-    private final String method;
-    private final String nonce;
-    private final String dataCid;
-    private final String dataFormat;
+    private String method;
+    private String nonce;
+    private String dataCid;
+    private String dataFormat;
 
     public Descriptor(String method, String nonce, String dataCid, String dataFormat) {
         this.method = method;
@@ -27,5 +27,21 @@ public class Descriptor {
 
     public String getDataFormat() {
         return dataFormat;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public void setNonce(String nonce) {
+        this.nonce = nonce;
+    }
+
+    public void setDataCid(String dataCid) {
+        this.dataCid = dataCid;
+    }
+
+    public void setDataFormat(String dataFormat) {
+        this.dataFormat = dataFormat;
     }
 }

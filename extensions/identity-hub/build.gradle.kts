@@ -20,8 +20,9 @@ val assertj: String by project
 val edcVersion: String by project
 val edcGroup: String by project
 val jupiterVersion: String by project
+val restAssured: String by project
 
-dependencies{
+dependencies {
     implementation("${edcGroup}:core:${edcVersion}")
     implementation("${edcGroup}:http:${edcVersion}")
 
@@ -30,6 +31,6 @@ dependencies{
     testImplementation("${edcGroup}:common-util:${edcVersion}:test-fixtures")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${jupiterVersion}")
     testImplementation("org.assertj:assertj-core:${assertj}")
+    testImplementation("io.rest-assured:rest-assured:${restAssured}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
 }
-

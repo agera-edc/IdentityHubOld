@@ -3,9 +3,12 @@ package org.eclipse.dataspaceconnector.dtos;
 import java.util.List;
 
 public class RequestObject {
-    private final String requestId;
-    private final String target;
-    private final List<MessageRequestObject> messages;
+
+    private String requestId;
+    private String target;
+    private List<MessageRequestObject> messages;
+
+    public RequestObject() {}
 
     public RequestObject(String requestId, String target, List<MessageRequestObject> messages) {
         this.requestId = requestId;
@@ -23,5 +26,17 @@ public class RequestObject {
 
     public List<MessageRequestObject> getMessages() {
         return messages;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    public void setMessages(List<MessageRequestObject> messages) {
+        this.messages = messages;
     }
 }
