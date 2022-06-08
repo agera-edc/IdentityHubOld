@@ -7,7 +7,8 @@ import org.eclipse.dataspaceconnector.dtos.VerifiableCredential;
 
 import java.util.List;
 
-public class CollectionsQueryProcessor implements MethodProcessor {
+public class CollectionsQueryProcessor implements MessageProcessor {
+
     @Override
     public MessageResultObject process(byte[] data) {
         List<HubObject> entries = List.of(new VerifiableCredential(), new VerifiableCredential());

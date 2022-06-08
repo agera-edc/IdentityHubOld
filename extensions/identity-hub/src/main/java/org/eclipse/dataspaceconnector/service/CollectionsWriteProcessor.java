@@ -6,13 +6,13 @@ import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
 import org.eclipse.dataspaceconnector.dtos.MessageStatus;
 import org.eclipse.dataspaceconnector.dtos.VerifiableCredential;
 import org.eclipse.dataspaceconnector.store.IdentityHubStore;
-
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
-public class CollectionsWriteProcessor implements MethodProcessor {
+
+public class CollectionsWriteProcessor implements MessageProcessor {
 
     private IdentityHubStore identityHubStore;
     private ObjectMapper mapper;

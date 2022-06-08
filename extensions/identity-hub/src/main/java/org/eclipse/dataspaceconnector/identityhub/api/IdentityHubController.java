@@ -10,9 +10,8 @@ import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
 import org.eclipse.dataspaceconnector.dtos.ResponseObject;
 import org.eclipse.dataspaceconnector.dtos.RequestStatus;
-import org.eclipse.dataspaceconnector.service.MethodProcessor;
-import org.eclipse.dataspaceconnector.service.MethodProcessorFactory;
-import org.eclipse.dataspaceconnector.store.IdentityHubStore;
+import org.eclipse.dataspaceconnector.service.MessageProcessor;
+import org.eclipse.dataspaceconnector.service.MessageProcessorFactory;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -24,12 +23,10 @@ import java.util.stream.Collectors;
 @Path("/identity-hub")
 public class IdentityHubController {
 
-    private IdentityHubStore identityHubStore;
-    private final MethodProcessorFactory methodProcessorFactory;
+    private final MessageProcessorFactory messageProcessorFactory;
 
-    public IdentityHubController(IdentityHubStore identityHubStore) {
-        this.identityHubStore = identityHubStore;
-        this.methodProcessorFactory = new MethodProcessorFactory(identityHubStore);
+    public IdentityHubController(MessageProcessorFactory messageProcessorFactory) {
+        this.messageProcessorFactory = messageProcessorFactory;
     }
 
     @POST
@@ -44,7 +41,7 @@ public class IdentityHubController {
 
     private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {
         String method = messageRequestObject.getDescriptor().getMethod();
-        MethodProcessor processor = methodProcessorFactory.create(method);
+        MessageProcessor processor = messageProcessorFactory.create(method);
         return processor.process(messageRequestObject.getData().getBytes(StandardCharsets.UTF_8));
     }
 

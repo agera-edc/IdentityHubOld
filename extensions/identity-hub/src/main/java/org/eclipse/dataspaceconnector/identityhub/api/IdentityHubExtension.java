@@ -1,6 +1,7 @@
 package org.eclipse.dataspaceconnector.identityhub.api;
 
 import org.eclipse.dataspaceconnector.identityhub.api.featuredetection.FeatureDetectionController;
+import org.eclipse.dataspaceconnector.service.MessageProcessorFactory;
 import org.eclipse.dataspaceconnector.spi.WebService;
 import org.eclipse.dataspaceconnector.spi.system.Inject;
 import org.eclipse.dataspaceconnector.spi.system.ServiceExtension;
@@ -20,8 +21,10 @@ public class IdentityHubExtension implements ServiceExtension {
     @Override
     public void initialize(ServiceExtensionContext context) {
         var featureDetectionController = new FeatureDetectionController();
-        var identityHubController = new IdentityHubController(identityHubStore);
         webService.registerResource(featureDetectionController);
+
+        var methodProcessorFactory = new MessageProcessorFactory(identityHubStore);
+        var identityHubController = new IdentityHubController(methodProcessorFactory);
         webService.registerResource(identityHubController);
     }
 }
