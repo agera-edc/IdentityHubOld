@@ -32,4 +32,11 @@ When participants are successfully onboarded to a dataspace, the dataspace autho
 
 The Identity Hub will be developed as an EDC extension and will be deployed as a [collocated test deployment](https://github.com/Metaform/mvd/blob/main/identity-hub/identity-hub-tech-spec.md#1-collocated-test-deployment) within the participant connector.
 
+## References
+
+- [Decentralized Web Node](https://identity.foundation/decentralized-web-node/spec/) draft specification
+- [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) W3C recommendation
+- [Web DID](https://w3c-ccg.github.io/did-method-web) draft specification
+- Stefan van der Wiele - [Decentralized Identifiers and the Eclipse Dataspace Connector](https://www.youtube.com/watch?v=ic-XEGzdODM) (YouTube video)
+
 
