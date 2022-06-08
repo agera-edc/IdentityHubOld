@@ -12,7 +12,7 @@ The Identity Hub will adhere to the [Decentralized Web Node specification](https
 * [Collections Write](https://identity.foundation/decentralized-web-node/spec/#write) to push Verifiable Credentials
 * [Feature Detection](https://identity.foundation/decentralized-web-node/spec/#feature-detection) listing all the aforementioned operations as supported.
 
-Each participant in the dataspace will have a single identity and a single Identity Hub instance available (no namespacing required). The Identity Hub endpoints will not be secured with any kind of auth.
+Each participant in the dataspace will have a single [distributed identifier](https://w3c-ccg.github.io/did-method-web) and a single Identity Hub instance available (no namespacing required). Communication with the Identity Hub will not be secured with any kind of authentication or authorization mechanism.
 
 ## Example Flows
 
