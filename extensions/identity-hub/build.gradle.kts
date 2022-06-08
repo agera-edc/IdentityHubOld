@@ -25,6 +25,7 @@ val restAssured: String by project
 dependencies {
     implementation("${edcGroup}:core:${edcVersion}")
     implementation("${edcGroup}:http:${edcVersion}")
+    testImplementation(project(":extensions:identity-hub-inmemory-store"))
 
     testImplementation(project(":rest-client"))
     testImplementation("${edcGroup}:junit-extension:${edcVersion}:test-fixtures")

@@ -5,8 +5,10 @@ import io.restassured.specification.RequestSpecification;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
 import org.eclipse.dataspaceconnector.identityhub.client.ApiClient;
 import org.eclipse.dataspaceconnector.identityhub.client.ApiClientFactory;
+import org.eclipse.dataspaceconnector.junit.launcher.EdcExtension;
 import org.eclipse.dataspaceconnector.junit.launcher.EdcRuntimeExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.io.IOException;
@@ -15,13 +17,8 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
+@ExtendWith(EdcExtension.class)
 public class IdentityHubControllerTest {
-    @RegisterExtension
-    static EdcRuntimeExtension edc = new EdcRuntimeExtension(
-            ":extensions:identity-hub",
-            "identity-hub",
-            Map.of()
-    );
 
     static final String API_URL = "http://localhost:8181/api";
     ApiClient apiClient = ApiClientFactory.createApiClient(API_URL);
