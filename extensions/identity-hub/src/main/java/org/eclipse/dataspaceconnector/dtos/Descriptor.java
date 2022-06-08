@@ -9,6 +9,9 @@ public class Descriptor {
     private String dataCid;
     private String dataFormat;
 
+    public Descriptor() {
+    }
+
     public Descriptor(String method, String nonce, String dataCid, String dataFormat) {
         this.method = method;
         this.nonce = nonce;
@@ -32,19 +35,4 @@ public class Descriptor {
         return dataFormat;
     }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public void setNonce(String nonce) {
-        this.nonce = nonce;
-    }
-
-    public void setDataCid(String dataCid) {
-        this.dataCid = dataCid;
-    }
-
-    public void setDataFormat(String dataFormat) {
-        this.dataFormat = dataFormat;
-    }
 }

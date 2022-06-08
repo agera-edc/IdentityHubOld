@@ -1,11 +1,9 @@
 package org.eclipse.dataspaceconnector.service;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
-import org.eclipse.dataspaceconnector.spi.system.Inject;
 import org.eclipse.dataspaceconnector.store.IdentityHubStore;
 
-public class CollectionsWriteProcessor implements MethodProcessor {
+public class CollectionsWriteProcessor implements MessageProcessor {
 
     private IdentityHubStore identityHubStore;
 

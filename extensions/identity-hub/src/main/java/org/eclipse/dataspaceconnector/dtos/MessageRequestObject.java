@@ -7,6 +7,9 @@ public class MessageRequestObject {
     private Descriptor descriptor;
     private String data;
 
+    public MessageRequestObject() {
+    }
+
     public MessageRequestObject(Descriptor descriptor, String data) {
         this.descriptor = descriptor;
         this.data = data;
@@ -20,11 +23,4 @@ public class MessageRequestObject {
         return data;
     }
 
-    public void setDescriptor(Descriptor descriptor) {
-        this.descriptor = descriptor;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
 }
