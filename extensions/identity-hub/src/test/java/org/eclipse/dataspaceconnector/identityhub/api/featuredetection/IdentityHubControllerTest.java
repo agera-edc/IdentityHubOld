@@ -7,6 +7,7 @@ import org.eclipse.dataspaceconnector.identityhub.client.ApiClient;
 import org.eclipse.dataspaceconnector.identityhub.client.ApiClientFactory;
 import org.eclipse.dataspaceconnector.junit.launcher.EdcExtension;
 import org.eclipse.dataspaceconnector.junit.launcher.EdcRuntimeExtension;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -24,15 +25,16 @@ public class IdentityHubControllerTest {
     ApiClient apiClient = ApiClientFactory.createApiClient(API_URL);
 
     @Test
-    void queryCollections() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        RequestObject requestObject = new RequestObject("id", "target", List.of());
-        String serializedRequestObject = mapper.writeValueAsString(requestObject);
+    void queryCollections() {
+        String requestId = "id";
+        RequestObject requestObject = new RequestObject(requestId, "target", List.of());
+
         baseRequest()
-                .body(serializedRequestObject)
-                .post()
-                .then()
-                .statusCode(200);
+            .body(requestObject)
+            .post()
+        .then()
+            .statusCode(200)
+            .body("requestId", Matchers.equalTo(requestId));
     }
 
     private RequestSpecification baseRequest() {
@@ -40,6 +42,6 @@ public class IdentityHubControllerTest {
                 .baseUri(API_URL)
                 .basePath("/identity-hub")
                 .contentType("application/json")
-                .when();
+            .when();
     }
 }
