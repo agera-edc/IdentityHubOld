@@ -21,7 +21,7 @@ Each participant in the dataspace will have a single [decentralized identifier](
 
 ### Participant Authorization
 
-During participant-to-participant communication via IDS REST, the request destination participant queries the Verifiable Presentations of the request originator participant. According to the policies in place and the available Verifiable Presentations access to resources is granted or denied.
+During participant-to-participant communication via IDS REST, the request destination participant queries the Verifiable Presentations of the request originator participant. Access to resources is granted or denied according to the policies in place and the available Verifiable Presentations.
 
 ![Authorization](authorization.png)
 
