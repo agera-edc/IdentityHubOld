@@ -1,6 +1,7 @@
 package org.eclipse.dataspaceconnector.dtos;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.Objects;
@@ -8,6 +9,7 @@ import java.util.Objects;
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#messages">Message documentation</a>
  */
+@JsonDeserialize(builder = MessageRequestObject.Builder.class)
 public class MessageRequestObject {
     private Descriptor descriptor;
     // TODO: Change data type to byte[]

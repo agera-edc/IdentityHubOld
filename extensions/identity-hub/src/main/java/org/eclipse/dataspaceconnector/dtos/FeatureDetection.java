@@ -1,5 +1,6 @@
 package org.eclipse.dataspaceconnector.dtos;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -37,6 +38,7 @@ public class FeatureDetection {
             featureDetection = new FeatureDetection();
         }
 
+        @JsonCreator()
         public static FeatureDetection.Builder newInstance() {
             return new FeatureDetection.Builder();
         }

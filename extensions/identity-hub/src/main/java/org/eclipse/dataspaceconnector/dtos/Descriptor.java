@@ -1,8 +1,13 @@
 package org.eclipse.dataspaceconnector.dtos;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#message-descriptors">message descriptor documentation</a>.
  */
+@JsonDeserialize(builder = Descriptor.Builder.class)
 public class Descriptor {
     private String method;
     private String nonce;
@@ -35,10 +40,12 @@ public class Descriptor {
         return dataFormat;
     }
 
+    @JsonPOJOBuilder(withPrefix = "")
     public static class Builder {
 
         private Descriptor descriptor;
 
+        @JsonCreator()
         public static Builder newInstance() {
             return new Builder();
         }

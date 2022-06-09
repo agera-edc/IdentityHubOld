@@ -31,11 +31,10 @@ public class CollectionsWriteProcessor implements MessageProcessor {
             var credential = mapper.readValue(decodedData, VerifiableCredential.class);
             identityHubStore.add(credential);
             var entries = new ArrayList<>(identityHubStore.getAll());
-            var result = new MessageResultObject(requestId, MessageStatus.OK, entries);
+            var result = MessageResultObject.Builder.newInstance().messageId(requestId).status(MessageStatus.OK).entries(entries).build();
             return result;
         } catch (JsonProcessingException e) {
-            new MessageResultObject(requestId, MessageStatus.MALFORMED_MESSAGE, List.of());
+            return MessageResultObject.Builder.newInstance().messageId(requestId).status(MessageStatus.MALFORMED_MESSAGE).entries(List.of()).build();
         }
-        throw new IllegalStateException("Unexpected error");
     }
 }

@@ -38,7 +38,11 @@ public class IdentityHubController {
                 .map(this::processMessage)
                 .collect(Collectors.toList());
 
-        return new ResponseObject(requestObject.getRequestId(), RequestStatus.OK, replies);
+        return ResponseObject.Builder.newInstance()
+                .requestId(requestObject.getRequestId())
+                .status(RequestStatus.OK)
+                .replies(replies)
+                .build();
     }
 
     private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {

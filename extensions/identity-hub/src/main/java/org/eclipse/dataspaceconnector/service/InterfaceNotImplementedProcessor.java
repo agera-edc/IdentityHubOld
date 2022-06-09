@@ -9,6 +9,10 @@ public class InterfaceNotImplementedProcessor implements MessageProcessor {
 
     @Override
     public MessageResultObject process(byte[] data) {
-        return new MessageResultObject("messageId", MessageStatus.INTERFACE_NOT_IMPLEMENTED, List.of());
+        return MessageResultObject.Builder.newInstance()
+                .messageId("messageId")
+                .status(MessageStatus.INTERFACE_NOT_IMPLEMENTED)
+                .entries(List.of())
+                .build();
     }
 }
