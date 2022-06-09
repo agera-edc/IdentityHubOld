@@ -5,6 +5,9 @@ import org.eclipse.dataspaceconnector.spi.system.ServiceExtension;
 import org.eclipse.dataspaceconnector.spi.system.ServiceExtensionContext;
 import org.eclipse.dataspaceconnector.store.IdentityHubStore;
 
+/**
+ * ServiceExtension used to provide an in-memory store of HubObjects.
+ */
 @Provides(IdentityHubStore.class)
 public class IdentityHubInMemoryStoreExtension implements ServiceExtension {
     @Override

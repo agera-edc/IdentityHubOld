@@ -9,7 +9,6 @@ import java.util.Objects;
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#message-descriptors">message descriptor documentation</a>.
  */
-
 @JsonDeserialize(builder = Descriptor.Builder.class)
 public class Descriptor {
     private String method;

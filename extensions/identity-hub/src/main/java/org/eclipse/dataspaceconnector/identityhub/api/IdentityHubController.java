@@ -5,19 +5,12 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
-import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
-import org.eclipse.dataspaceconnector.dtos.MessageResponseObject;
-import org.eclipse.dataspaceconnector.dtos.RequestObject;
-import org.eclipse.dataspaceconnector.dtos.RequestStatus;
-import org.eclipse.dataspaceconnector.dtos.ResponseObject;
+import org.eclipse.dataspaceconnector.dtos.*;
 import org.eclipse.dataspaceconnector.service.MessageProcessor;
 import org.eclipse.dataspaceconnector.service.MessageProcessorFactory;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.Optional.ofNullable;
 
 @Tag(name = "IdentityHub")
 @Produces({"application/json"})

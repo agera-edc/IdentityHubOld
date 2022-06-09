@@ -6,6 +6,9 @@ import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_
 import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
 import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
 
+/**
+ * Factory used to provide the right MessageProcessor according to the method.
+ */
 public class MessageProcessorFactory {
 
     private final IdentityHubStore identityHubStore;
