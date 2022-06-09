@@ -31,10 +31,9 @@ public class CollectionsWriteProcessor implements MessageProcessor {
             var decodedData = new String(Base64.getUrlDecoder().decode(data));
             var credential = mapper.readValue(decodedData, VerifiableCredential.class);
             identityHubStore.add(credential);
-            var result = MessageResponseObject.Builder.newInstance().messageId(requestId).status(MessageStatus.OK).entries(List.of()).build();
-            return result;
+            return MessageResponseObject.Builder.newInstance().messageId(requestId).status(MessageStatus.OK).build();
         } catch (JsonProcessingException e) {
-            return MessageResponseObject.Builder.newInstance().messageId(requestId).status(MessageStatus.MALFORMED_MESSAGE).entries(List.of()).build();
+            return MessageResponseObject.Builder.newInstance().messageId(requestId).status(MessageStatus.MALFORMED_MESSAGE).build();
         }
     }
 }

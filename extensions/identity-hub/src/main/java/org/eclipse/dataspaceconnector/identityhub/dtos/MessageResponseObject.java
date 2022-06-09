@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,7 @@ import java.util.Objects;
 public class MessageResponseObject {
     private String messageId;
     private MessageStatus status;
-    private List<HubObject> entries;
+    private List<HubObject> entries = new ArrayList<>();
 
     // TODO: implement messageId as a stringified Version 1 CID of the associated message (as per spec)
     // Temporary message id value.
