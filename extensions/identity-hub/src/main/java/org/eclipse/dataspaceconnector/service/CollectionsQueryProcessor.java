@@ -10,6 +10,9 @@ import java.util.List;
 
 import static org.eclipse.dataspaceconnector.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
 
+/**
+ * MessageProcessor used to process RequestObject with method "CollectionsQuery", in order to query HubOjects.
+ */
 public class CollectionsQueryProcessor implements MessageProcessor {
 
     private IdentityHubStore identityHubStore;

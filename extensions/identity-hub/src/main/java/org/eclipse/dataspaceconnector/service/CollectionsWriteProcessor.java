@@ -11,6 +11,9 @@ import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * MessageProcessor used to process RequestObject with method "CollectionsWrites", in order to write HubOjects.
+ */
 public class CollectionsWriteProcessor implements MessageProcessor {
 
     private IdentityHubStore identityHubStore;
