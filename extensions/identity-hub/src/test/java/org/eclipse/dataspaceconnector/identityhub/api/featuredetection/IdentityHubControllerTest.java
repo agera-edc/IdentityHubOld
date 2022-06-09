@@ -17,6 +17,9 @@ import java.nio.charset.StandardCharsets;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -38,7 +41,7 @@ public class IdentityHubControllerTest {
             .target(target)
             .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
                 .descriptor(Descriptor.Builder.newInstance()
-                        .method("CollectionsQuery")
+                        .method(COLLECTIONS_QUERY)
                         .nonce(nonce)
                         .build())
                 .build())
@@ -72,7 +75,7 @@ public class IdentityHubControllerTest {
             .target(target)
             .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
                 .descriptor(Descriptor.Builder.newInstance()
-                        .method("CollectionsWrite")
+                        .method(COLLECTIONS_WRITE)
                         .nonce(nonce)
                         .build())
                 .data(data)
@@ -103,7 +106,7 @@ public class IdentityHubControllerTest {
                 .addMessageRequestObject(
                         MessageRequestObject.Builder.newInstance()
                                 .descriptor(Descriptor.Builder.newInstance()
-                                        .method("FeatureDetectionRead")
+                                        .method(FEATURE_DETECTION_READ)
                                         .nonce(nonce)
                                         .build())
                                 .build())
