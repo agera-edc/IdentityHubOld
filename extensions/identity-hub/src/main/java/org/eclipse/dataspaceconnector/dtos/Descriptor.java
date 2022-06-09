@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.util.Objects;
+
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#message-descriptors">message descriptor documentation</a>.
  */
@@ -16,13 +18,6 @@ public class Descriptor {
     private String dataFormat;
 
     private Descriptor() {
-    }
-
-    private Descriptor(String method, String nonce, String dataCid, String dataFormat) {
-        this.method = method;
-        this.nonce = nonce;
-        this.dataCid = dataCid;
-        this.dataFormat = dataFormat;
     }
 
     public String getMethod() {
@@ -52,8 +47,7 @@ public class Descriptor {
         }
 
         private Builder() {
-            // Descriptor default field for simplicity for now.
-            descriptor = new Descriptor("", "", "", "");
+            descriptor = new Descriptor();
         }
 
         public Builder method(String method) {
@@ -77,6 +71,8 @@ public class Descriptor {
         }
 
         public Descriptor build() {
+            Objects.requireNonNull(descriptor.method, "Descriptor must contain method property.");
+            Objects.requireNonNull(descriptor.nonce, "Descriptor must contain nonce property.");
             return descriptor;
         }
     }

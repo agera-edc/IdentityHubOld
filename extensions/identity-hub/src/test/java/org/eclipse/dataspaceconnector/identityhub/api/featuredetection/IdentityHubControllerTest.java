@@ -38,6 +38,7 @@ public class IdentityHubControllerTest {
             .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
                 .descriptor(Descriptor.Builder.newInstance()
                         .method("CollectionsQuery")
+                        .nonce(nonce)
                         .build())
                 .build())
             .build();
@@ -70,6 +71,7 @@ public class IdentityHubControllerTest {
             .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
                 .descriptor(Descriptor.Builder.newInstance()
                         .method("CollectionsWrite")
+                        .nonce(nonce)
                         .build())
                 .data(data)
                 .build())
@@ -84,7 +86,7 @@ public class IdentityHubControllerTest {
             .body("replies", hasSize(1))
             .body("replies[0].status.code", equalTo(200))
             .body("replies[0].status.detail", equalTo("The message was successfully processed"))
-            .body("replies[0].entries", hasSize(1));
+            .body("replies[0].entries", hasSize(0));
     }
 
     @Test
@@ -100,6 +102,7 @@ public class IdentityHubControllerTest {
                     MessageRequestObject.Builder.newInstance()
                         .descriptor(Descriptor.Builder.newInstance()
                                 .method("Not supported")
+                                .nonce(nonce)
                                 .build())
                         .build())
                 .build();
