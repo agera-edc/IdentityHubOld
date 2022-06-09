@@ -1,6 +1,5 @@
 package org.eclipse.dataspaceconnector.identityhub.service;
 
-import org.eclipse.dataspaceconnector.dtos.*;
 import org.eclipse.dataspaceconnector.identityhub.dtos.FeatureDetection;
 import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
 import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
