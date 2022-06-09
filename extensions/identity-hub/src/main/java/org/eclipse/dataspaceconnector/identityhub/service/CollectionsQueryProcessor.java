@@ -24,7 +24,6 @@ public class CollectionsQueryProcessor implements MessageProcessor {
     @Override
     public MessageResponseObject process(byte[] data) {
         List<HubObject> entries = new ArrayList<>(identityHubStore.getAll());
-        // TODO: Figure out what is supposed to be messageId and use the right implementation.
         return MessageResponseObject.Builder.newInstance()
                 .messageId(MESSAGE_ID_VALUE)
                 .status(MessageStatus.OK)

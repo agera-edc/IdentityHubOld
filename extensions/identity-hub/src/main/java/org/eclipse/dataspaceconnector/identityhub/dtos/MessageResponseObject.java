@@ -18,7 +18,7 @@ public class MessageResponseObject {
     private MessageStatus status;
     private List<HubObject> entries;
 
-    // TODO: Figure out what messageId is supposed to be.
+    // TODO: implement messageId as a stringified Version 1 CID of the associated message (as per spec)
     // Temporary message id value.
     public static String MESSAGE_ID_VALUE = "messageId";
 
