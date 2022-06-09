@@ -12,7 +12,7 @@ public class MessageStatus extends Status {
     public static final MessageStatus FAILED_AUTHORIZATION = new MessageStatus(401, "The message failed authorization requirements");
     public static final MessageStatus INTERFACE_NOT_IMPLEMENTED = new MessageStatus(501, "The interface method is not implemented");
 
-    public MessageStatus(int status, String detail) {
-        super(status, detail);
+    public MessageStatus(int code, String detail) {
+        super(code, detail);
     }
 }
