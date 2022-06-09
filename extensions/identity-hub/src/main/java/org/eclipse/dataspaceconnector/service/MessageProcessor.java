@@ -1,8 +1,8 @@
 package org.eclipse.dataspaceconnector.service;
 
-import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
+import org.eclipse.dataspaceconnector.dtos.MessageResponseObject;
 
 public interface MessageProcessor {
 
-    MessageResultObject process(byte[] data);
+    MessageResponseObject process(byte[] data);
 }

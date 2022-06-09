@@ -6,7 +6,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
-import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
+import org.eclipse.dataspaceconnector.dtos.MessageResponseObject;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
 import org.eclipse.dataspaceconnector.dtos.RequestStatus;
 import org.eclipse.dataspaceconnector.dtos.ResponseObject;
@@ -33,7 +33,7 @@ public class IdentityHubController {
 
     @POST
     public ResponseObject handleRequest(RequestObject requestObject) {
-        List<MessageResultObject> replies = requestObject.getMessages()
+        List<MessageResponseObject> replies = requestObject.getMessages()
                 .stream()
                 .map(this::processMessage)
                 .collect(Collectors.toList());
@@ -45,7 +45,7 @@ public class IdentityHubController {
                 .build();
     }
 
-    private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {
+    private MessageResponseObject processMessage(MessageRequestObject messageRequestObject) {
         String method = messageRequestObject.getDescriptor().getMethod();
         MessageProcessor processor = messageProcessorFactory.create(method);
         byte[] bytes = ofNullable(messageRequestObject.getData()).orElse("").getBytes(StandardCharsets.UTF_8);

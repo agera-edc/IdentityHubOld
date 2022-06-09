@@ -15,9 +15,9 @@ import java.util.Objects;
 public class ResponseObject {
     private String requestId;
     private RequestStatus status;
-    private List<MessageResultObject> replies;
+    private List<MessageResponseObject> replies;
 
-    private ResponseObject(String requestId, RequestStatus status, List<MessageResultObject> replies) {
+    private ResponseObject(String requestId, RequestStatus status, List<MessageResponseObject> replies) {
         this.requestId = requestId;
         this.status = status;
         this.replies = replies;
@@ -31,7 +31,7 @@ public class ResponseObject {
         return status;
     }
 
-    public List<MessageResultObject> getReplies() {
+    public List<MessageResponseObject> getReplies() {
         return replies;
     }
 
@@ -58,7 +58,7 @@ public class ResponseObject {
             return this;
         }
 
-        public Builder replies(List<MessageResultObject> replies) {
+        public Builder replies(List<MessageResponseObject> replies) {
             responseObject.replies = new ArrayList<>(replies);
             return this;
         }
