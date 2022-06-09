@@ -16,13 +16,7 @@ public class RequestObject {
     private String target;
     private List<MessageRequestObject> messages = new ArrayList<>();
 
-    public RequestObject() {
-    }
-
-    public RequestObject(String requestId, String target, List<MessageRequestObject> messages) {
-        this.requestId = requestId;
-        this.target = target;
-        this.messages = messages;
+    private RequestObject() {
     }
 
     public String getRequestId() {
