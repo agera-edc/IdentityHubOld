@@ -51,10 +51,11 @@ public class MessageRequestObject {
             return this;
         }
 
-        public MessageRequestObject.Builder target(String data) {
+        public MessageRequestObject.Builder data(String data) {
             messageRequestObject.data = data;
             return this;
         }
+
 
         public MessageRequestObject build() {
             Objects.requireNonNull(messageRequestObject.getDescriptor(), "MessageRequestObject builder missing descriptor property.");

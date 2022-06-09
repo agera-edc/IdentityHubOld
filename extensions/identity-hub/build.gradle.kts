@@ -21,6 +21,7 @@ val edcVersion: String by project
 val edcGroup: String by project
 val jupiterVersion: String by project
 val restAssured: String by project
+val faker: String by project
 
 dependencies {
     implementation("${edcGroup}:core:${edcVersion}")
@@ -33,5 +34,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${jupiterVersion}")
     testImplementation("org.assertj:assertj-core:${assertj}")
     testImplementation("io.rest-assured:rest-assured:${restAssured}")
+    testImplementation("com.github.javafaker:javafaker:${faker}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
 }
