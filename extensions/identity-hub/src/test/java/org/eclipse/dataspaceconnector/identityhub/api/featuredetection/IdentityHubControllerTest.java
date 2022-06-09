@@ -105,16 +105,16 @@ public class IdentityHubControllerTest {
         var nonce = FAKER.internet().uuid();
 
         var requestObject = RequestObject.Builder.newInstance()
-                .requestId(requestId)
-                .target(target)
-                .addMessageRequestObject(
-                        MessageRequestObject.Builder.newInstance()
-                                .descriptor(Descriptor.Builder.newInstance()
-                                        .method(FEATURE_DETECTION_READ)
-                                        .nonce(nonce)
-                                        .build())
-                                .build())
-                .build();
+            .requestId(requestId)
+            .target(target)
+            .addMessageRequestObject(
+                MessageRequestObject.Builder.newInstance()
+                    .descriptor(Descriptor.Builder.newInstance()
+                        .method(FEATURE_DETECTION_READ)
+                        .nonce(nonce)
+                        .build())
+                    .build())
+            .build();
 
         baseRequest()
             .body(requestObject)
@@ -135,16 +135,16 @@ public class IdentityHubControllerTest {
         var nonce = FAKER.internet().uuid();
 
         var requestObject = RequestObject.Builder.newInstance()
-                .requestId(requestId)
-                .target(target)
-                .addMessageRequestObject(
-                    MessageRequestObject.Builder.newInstance()
-                        .descriptor(Descriptor.Builder.newInstance()
-                                .method("Not supported")
-                                .nonce(nonce)
-                                .build())
+            .requestId(requestId)
+            .target(target)
+            .addMessageRequestObject(
+                MessageRequestObject.Builder.newInstance()
+                    .descriptor(Descriptor.Builder.newInstance()
+                        .method("Not supported")
+                        .nonce(nonce)
                         .build())
-                .build();
+                    .build())
+            .build();
 
         baseRequest()
             .body(requestObject)
@@ -159,9 +159,9 @@ public class IdentityHubControllerTest {
 
     private RequestSpecification baseRequest() {
         return given()
-                .baseUri(API_URL)
-                .basePath("/identity-hub")
-                .contentType(JSON)
-            .when();
+            .baseUri(API_URL)
+            .basePath("/identity-hub")
+            .contentType(JSON)
+        .when();
     }
 }
