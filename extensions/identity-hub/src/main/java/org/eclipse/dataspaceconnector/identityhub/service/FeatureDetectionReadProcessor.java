@@ -1,12 +1,17 @@
-package org.eclipse.dataspaceconnector.service;
+package org.eclipse.dataspaceconnector.identityhub.service;
 
 import org.eclipse.dataspaceconnector.dtos.*;
+import org.eclipse.dataspaceconnector.identityhub.dtos.FeatureDetection;
+import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageStatus;
+import org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces;
 
 import java.util.List;
 
-import static org.eclipse.dataspaceconnector.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
-import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
-import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
 
 public class FeatureDetectionReadProcessor implements MessageProcessor {
 

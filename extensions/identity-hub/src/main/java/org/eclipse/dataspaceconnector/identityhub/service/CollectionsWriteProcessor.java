@@ -1,11 +1,11 @@
-package org.eclipse.dataspaceconnector.service;
+package org.eclipse.dataspaceconnector.identityhub.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.eclipse.dataspaceconnector.dtos.MessageResponseObject;
-import org.eclipse.dataspaceconnector.dtos.MessageStatus;
-import org.eclipse.dataspaceconnector.dtos.VerifiableCredential;
-import org.eclipse.dataspaceconnector.store.IdentityHubStore;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageStatus;
+import org.eclipse.dataspaceconnector.identityhub.dtos.VerifiableCredential;
+import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 
 import java.util.Base64;
 import java.util.List;

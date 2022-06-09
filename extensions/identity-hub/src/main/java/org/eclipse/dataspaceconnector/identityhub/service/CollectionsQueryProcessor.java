@@ -1,14 +1,14 @@
-package org.eclipse.dataspaceconnector.service;
+package org.eclipse.dataspaceconnector.identityhub.service;
 
-import org.eclipse.dataspaceconnector.dtos.HubObject;
-import org.eclipse.dataspaceconnector.dtos.MessageResponseObject;
-import org.eclipse.dataspaceconnector.dtos.MessageStatus;
-import org.eclipse.dataspaceconnector.store.IdentityHubStore;
+import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageStatus;
+import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.eclipse.dataspaceconnector.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
 
 /**
  * MessageProcessor used to process RequestObject with method "CollectionsQuery", in order to query HubOjects.

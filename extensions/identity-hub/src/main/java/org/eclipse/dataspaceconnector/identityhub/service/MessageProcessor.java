@@ -1,6 +1,6 @@
-package org.eclipse.dataspaceconnector.service;
+package org.eclipse.dataspaceconnector.identityhub.service;
 
-import org.eclipse.dataspaceconnector.dtos.MessageResponseObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
 
 /**
  * Interface used to processing a single

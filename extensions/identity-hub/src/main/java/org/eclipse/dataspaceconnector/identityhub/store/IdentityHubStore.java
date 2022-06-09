@@ -1,6 +1,6 @@
-package org.eclipse.dataspaceconnector.store;
+package org.eclipse.dataspaceconnector.identityhub.store;
 
-import org.eclipse.dataspaceconnector.dtos.HubObject;
+import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
 
 import java.util.Collection;
 

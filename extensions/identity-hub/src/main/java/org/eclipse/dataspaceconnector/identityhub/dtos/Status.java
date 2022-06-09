@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.dtos;
+package org.eclipse.dataspaceconnector.identityhub.dtos;
 
 /**
  * Describes status of the request done by calling the identity-hub endpoint.

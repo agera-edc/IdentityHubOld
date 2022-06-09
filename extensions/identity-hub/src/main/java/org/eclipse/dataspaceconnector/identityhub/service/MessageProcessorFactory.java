@@ -1,10 +1,10 @@
-package org.eclipse.dataspaceconnector.service;
+package org.eclipse.dataspaceconnector.identityhub.service;
 
-import org.eclipse.dataspaceconnector.store.IdentityHubStore;
+import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 
-import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
-import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
-import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
+import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
 
 /**
  * Factory used to provide the right MessageProcessor according to the method.

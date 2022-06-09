@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.dtos;
+package org.eclipse.dataspaceconnector.identityhub.dtos;
 
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#response-objects">response objects documentation</a>
