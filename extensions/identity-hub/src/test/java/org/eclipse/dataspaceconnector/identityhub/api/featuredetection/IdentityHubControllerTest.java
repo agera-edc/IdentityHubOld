@@ -70,8 +70,7 @@ public class IdentityHubControllerTest {
             .body("requestId", equalTo(REQUEST_ID))
             .body("replies", hasSize(1))
             .body("replies[0].status.code", equalTo(200))
-            .body("replies[0].status.detail", equalTo("The message was successfully processed"))
-            .body("replies[0].entries", hasSize(0));
+            .body("replies[0].status.detail", equalTo("The message was successfully processed"));
     }
 
     private List<VerifiableCredential> queryVerifiableCredentials() {
@@ -130,18 +129,14 @@ public class IdentityHubControllerTest {
 
     @Test
     void methodNotImplemented() {
-        var requestId = FAKER.internet().uuid();
-        var target = FAKER.internet().url();
-        var nonce = FAKER.internet().uuid();
-
         var requestObject = RequestObject.Builder.newInstance()
-            .requestId(requestId)
-            .target(target)
+            .requestId(REQUEST_ID)
+            .target(TARGET)
             .addMessageRequestObject(
                 MessageRequestObject.Builder.newInstance()
                     .descriptor(Descriptor.Builder.newInstance()
                         .method("Not supported")
-                        .nonce(nonce)
+                        .nonce(NONCE)
                         .build())
                     .build())
             .build();
@@ -151,7 +146,7 @@ public class IdentityHubControllerTest {
             .post()
         .then()
             .statusCode(200)
-            .body("requestId", equalTo(requestId))
+            .body("requestId", equalTo(REQUEST_ID))
             .body("replies", hasSize(1))
             .body("replies[0].status.code", equalTo(501))
             .body("replies[0].status.detail", equalTo("The interface method is not implemented"));
