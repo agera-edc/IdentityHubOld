@@ -24,14 +24,12 @@ public class CollectionsWriteProcessor implements MessageProcessor {
     }
 
     public MessageResultObject process(byte[] data) {
-        // TODO: Save the requestId?
         var requestId = UUID.randomUUID().toString();
         try {
             var decodedData = new String(Base64.getUrlDecoder().decode(data));
             var credential = mapper.readValue(decodedData, VerifiableCredential.class);
             identityHubStore.add(credential);
-            var entries = new ArrayList<>(identityHubStore.getAll());
-            var result = MessageResultObject.Builder.newInstance().messageId(requestId).status(MessageStatus.OK).entries(entries).build();
+            var result = MessageResultObject.Builder.newInstance().messageId(requestId).status(MessageStatus.OK).entries(List.of()).build();
             return result;
         } catch (JsonProcessingException e) {
             return MessageResultObject.Builder.newInstance().messageId(requestId).status(MessageStatus.MALFORMED_MESSAGE).entries(List.of()).build();

@@ -14,6 +14,8 @@ import org.eclipse.dataspaceconnector.dtos.FeatureDetection;
 @Produces({"application/json"})
 @Consumes({"application/json"})
 @Path("/featuredetection")
+
+// TODO: Move logic to common endpoint instead of having this controller.
 public class FeatureDetectionController {
 
     @GET

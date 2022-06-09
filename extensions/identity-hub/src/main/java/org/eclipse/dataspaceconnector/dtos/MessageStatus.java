@@ -6,7 +6,9 @@ package org.eclipse.dataspaceconnector.dtos;
  */
 public class MessageStatus extends Status {
     public static final MessageStatus OK = new MessageStatus(200, "The message was successfully processed");
+    // TODO: Add tests for MALFORMED_MESSAGE
     public static final MessageStatus MALFORMED_MESSAGE = new MessageStatus(400, "The message was malformed or improperly constructed");
+    // TODO: Add tests for FAILED_AUTHORIZATION
     public static final MessageStatus FAILED_AUTHORIZATION = new MessageStatus(401, "The message failed authorization requirements");
     public static final MessageStatus INTERFACE_NOT_IMPLEMENTED = new MessageStatus(501, "The interface method is not implemented");
 

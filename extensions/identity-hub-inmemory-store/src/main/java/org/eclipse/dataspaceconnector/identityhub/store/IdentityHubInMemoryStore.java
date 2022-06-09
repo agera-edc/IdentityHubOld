@@ -5,8 +5,8 @@ import org.eclipse.dataspaceconnector.store.IdentityHubStore;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
+// TODO: Handle concurrency
 public class IdentityHubInMemoryStore implements IdentityHubStore {
 
     Collection<HubObject> hubObjects;

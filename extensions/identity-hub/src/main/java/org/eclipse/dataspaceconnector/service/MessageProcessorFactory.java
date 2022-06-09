@@ -11,6 +11,7 @@ public class MessageProcessorFactory {
 
     public MessageProcessor create(String method) {
         switch (method) {
+            // TODO: Create an enum
             case "CollectionsQuery":
                 return new CollectionsQueryProcessor();
             case "CollectionsWrite":
