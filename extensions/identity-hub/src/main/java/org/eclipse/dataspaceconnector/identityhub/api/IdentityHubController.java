@@ -8,14 +8,16 @@ import jakarta.ws.rs.Produces;
 import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
 import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
-import org.eclipse.dataspaceconnector.dtos.ResponseObject;
 import org.eclipse.dataspaceconnector.dtos.RequestStatus;
+import org.eclipse.dataspaceconnector.dtos.ResponseObject;
 import org.eclipse.dataspaceconnector.service.MessageProcessor;
 import org.eclipse.dataspaceconnector.service.MessageProcessorFactory;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Optional.ofNullable;
 
 @Tag(name = "IdentityHub")
 @Produces({"application/json"})
@@ -42,7 +44,8 @@ public class IdentityHubController {
     private MessageResultObject processMessage(MessageRequestObject messageRequestObject) {
         String method = messageRequestObject.getDescriptor().getMethod();
         MessageProcessor processor = messageProcessorFactory.create(method);
-        return processor.process(messageRequestObject.getData().getBytes(StandardCharsets.UTF_8));
+        byte[] bytes = ofNullable(messageRequestObject.getData()).orElse("").getBytes(StandardCharsets.UTF_8);
+        return processor.process(bytes);
     }
 
 }
