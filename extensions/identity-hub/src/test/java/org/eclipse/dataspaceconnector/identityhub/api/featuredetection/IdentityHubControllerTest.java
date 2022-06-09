@@ -14,9 +14,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
 import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
 import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
@@ -29,55 +31,33 @@ public class IdentityHubControllerTest {
 
     private static final String API_URL = "http://localhost:8181/api";
     private static final Faker FAKER = new Faker();
+    private static final String VERIFIABLE_CREDENTIAL_ID = FAKER.internet().uuid();
+    private static final String NONCE = FAKER.internet().uuid();
+    private static final String TARGET = FAKER.internet().url();
+    private static final String REQUEST_ID = FAKER.internet().uuid();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Test
-    void queryCollections() {
-        var requestId = FAKER.internet().uuid();
-        var target = FAKER.internet().url();
-        var nonce = FAKER.internet().uuid();
+    void pushAndQueryVerifiableCredentials() throws IOException {
+        VerifiableCredential credential = VerifiableCredential.Builder.newInstance().id(VERIFIABLE_CREDENTIAL_ID).build();
 
-        RequestObject requestObject = RequestObject.Builder.newInstance()
-            .requestId(requestId)
-            .target(target)
-            .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
-                .descriptor(Descriptor.Builder.newInstance()
-                        .method(COLLECTIONS_QUERY)
-                        .nonce(nonce)
-                        .build())
-                .build())
-            .build();
+        pushVerifiableCredential(credential);
+        List<VerifiableCredential> verifiableCredentials = queryVerifiableCredentials();
 
-        baseRequest()
-            .body(requestObject)
-            .post()
-        .then()
-            .statusCode(200)
-            .body("requestId", equalTo(requestId))
-            .body("replies", hasSize(1))
-            .body("replies[0].status.code", equalTo(200))
-            .body("replies[0].status.detail", equalTo("The message was successfully processed"))
-            .body("replies[0].entries", hasSize(0));
+        assertThat(verifiableCredentials).usingRecursiveFieldByFieldElementComparator().containsExactly(credential);
     }
 
-    @Test
-    void writeCollections() throws IOException {
-        var requestId = FAKER.internet().uuid();
-        var target = FAKER.internet().url();
-        var nonce = FAKER.internet().uuid();
-        var verifiableCredentialId = FAKER.internet().uuid();
-
-        ObjectMapper mapper = new ObjectMapper();
-        VerifiableCredential credential = VerifiableCredential.Builder.newInstance().id(verifiableCredentialId).build();
-        byte[] data = Base64.encode(mapper.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8));
+    private void pushVerifiableCredential(VerifiableCredential credential) throws IOException {
+        byte[] data = Base64.encode(OBJECT_MAPPER.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8));
 
         RequestObject requestObject = RequestObject.Builder.newInstance()
-            .requestId(requestId)
-            .target(target)
+            .requestId(REQUEST_ID)
+            .target(TARGET)
             .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
                 .descriptor(Descriptor.Builder.newInstance()
-                        .method(COLLECTIONS_WRITE)
-                        .nonce(nonce)
-                        .build())
+                    .method(COLLECTIONS_WRITE)
+                    .nonce(NONCE)
+                    .build())
                 .data(data)
                 .build())
             .build();
@@ -87,11 +67,35 @@ public class IdentityHubControllerTest {
             .post()
         .then()
             .statusCode(200)
-            .body("requestId", equalTo(requestId))
+            .body("requestId", equalTo(REQUEST_ID))
             .body("replies", hasSize(1))
             .body("replies[0].status.code", equalTo(200))
             .body("replies[0].status.detail", equalTo("The message was successfully processed"))
             .body("replies[0].entries", hasSize(0));
+    }
+
+    private List<VerifiableCredential> queryVerifiableCredentials() {
+        RequestObject requestObject = RequestObject.Builder.newInstance()
+            .requestId(REQUEST_ID)
+            .target(TARGET)
+            .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
+                .descriptor(Descriptor.Builder.newInstance()
+                    .method(COLLECTIONS_QUERY)
+                    .nonce(NONCE)
+                    .build())
+                .build())
+            .build();
+
+        return baseRequest()
+            .body(requestObject)
+            .post()
+        .then()
+            .statusCode(200)
+            .body("requestId", equalTo(REQUEST_ID))
+            .body("replies", hasSize(1))
+            .body("replies[0].status.code", equalTo(200))
+            .body("replies[0].status.detail", equalTo("The message was successfully processed"))
+            .extract().body().jsonPath().getList("replies[0].entries", VerifiableCredential.class);
     }
 
     @Test
@@ -125,7 +129,7 @@ public class IdentityHubControllerTest {
     }
 
     @Test
-    void invalidMessageMethod() {
+    void methodNotImplemented() {
         var requestId = FAKER.internet().uuid();
         var target = FAKER.internet().url();
         var nonce = FAKER.internet().uuid();
