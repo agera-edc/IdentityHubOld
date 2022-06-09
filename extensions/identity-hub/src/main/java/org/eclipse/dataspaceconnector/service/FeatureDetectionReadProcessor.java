@@ -1,10 +1,6 @@
 package org.eclipse.dataspaceconnector.service;
 
-import org.eclipse.dataspaceconnector.dtos.FeatureDetection;
-import org.eclipse.dataspaceconnector.dtos.HubObject;
-import org.eclipse.dataspaceconnector.dtos.MessageResultObject;
-import org.eclipse.dataspaceconnector.dtos.MessageStatus;
-import org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces;
+import org.eclipse.dataspaceconnector.dtos.*;
 
 import java.util.List;
 
@@ -14,7 +10,7 @@ import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_
 public class FeatureDetectionReadProcessor implements MessageProcessor {
 
     @Override
-    public MessageResultObject process(byte[] data) {
+    public MessageResponseObject process(byte[] data) {
         List<HubObject> entries = List.of(
                 FeatureDetection.Builder.newInstance().interfaces(
                         WebNodeInterfaces.Builder.newInstance()
@@ -23,7 +19,7 @@ public class FeatureDetectionReadProcessor implements MessageProcessor {
                             .build()
                 ).build()
         );
-        return MessageResultObject.Builder.newInstance()
+        return MessageResponseObject.Builder.newInstance()
                 .messageId("messageId")
                 .status(MessageStatus.OK)
                 .entries(entries)
