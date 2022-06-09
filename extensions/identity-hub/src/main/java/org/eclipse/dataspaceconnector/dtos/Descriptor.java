@@ -9,10 +9,10 @@ public class Descriptor {
     private String dataCid;
     private String dataFormat;
 
-    public Descriptor() {
+    private Descriptor() {
     }
 
-    public Descriptor(String method, String nonce, String dataCid, String dataFormat) {
+    private Descriptor(String method, String nonce, String dataCid, String dataFormat) {
         this.method = method;
         this.nonce = nonce;
         this.dataCid = dataCid;
@@ -35,19 +35,41 @@ public class Descriptor {
         return dataFormat;
     }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
+    public static class Builder {
 
-    public void setNonce(String nonce) {
-        this.nonce = nonce;
-    }
+        private Descriptor descriptor;
 
-    public void setDataCid(String dataCid) {
-        this.dataCid = dataCid;
-    }
+        public static Builder newInstance() {
+            return new Builder();
+        }
 
-    public void setDataFormat(String dataFormat) {
-        this.dataFormat = dataFormat;
+        private Builder() {
+            // Descriptor default field for simplicity for now.
+            descriptor = new Descriptor("", "", "", "");
+        }
+
+        public Builder method(String method) {
+            descriptor.method = method;
+            return this;
+        }
+
+        public Builder nonce(String nonce) {
+            descriptor.nonce = nonce;
+            return this;
+        }
+
+        public Builder dataCid(String dataCid) {
+            descriptor.dataCid = dataCid;
+            return this;
+        }
+
+        public Builder dataFormat(String dataFormat) {
+            descriptor.dataFormat = dataFormat;
+            return this;
+        }
+
+        public Descriptor build() {
+            return descriptor;
+        }
     }
 }

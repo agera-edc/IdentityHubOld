@@ -1,12 +1,8 @@
 package org.eclipse.dataspaceconnector.identityhub.api.featuredetection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.restassured.internal.RestAssuredResponseImpl;
-import io.restassured.internal.ValidatableResponseImpl;
 import io.restassured.specification.RequestSpecification;
 import org.bouncycastle.util.encoders.Base64;
-import org.eclipse.dataspaceconnector.dtos.Descriptor;
-import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
 import org.eclipse.dataspaceconnector.dtos.Descriptor;
 import org.eclipse.dataspaceconnector.dtos.MessageRequestObject;
 import org.eclipse.dataspaceconnector.dtos.RequestObject;
@@ -47,12 +43,13 @@ public class IdentityHubControllerTest {
     @Test
     void invalidMessageMethod() {
         String requestId = "id";
+        var descriptor = Descriptor.Builder.newInstance().method("Not supported").build();
         var requestObject = RequestObject.Builder.newInstance()
                 .requestId(requestId)
                 .target("target")
                 .addMessageRequestObject(
                         MessageRequestObject.Builder.newInstance()
-                                .descriptor(new Descriptor("Not supported", "", "", ""))
+                                .descriptor(descriptor)
                                 .build())
                 .build();
 
@@ -70,7 +67,7 @@ public class IdentityHubControllerTest {
     @Test
     void writeCollections() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Descriptor descriptor = new Descriptor("CollectionsWrite", "", "", "");
+        Descriptor descriptor = Descriptor.Builder.newInstance().method("CollectionsWrite").build();
         VerifiableCredential credential = new VerifiableCredential();
         String data = new String(Base64.encode(mapper.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8)));
         MessageRequestObject message = new MessageRequestObject(descriptor, data);
