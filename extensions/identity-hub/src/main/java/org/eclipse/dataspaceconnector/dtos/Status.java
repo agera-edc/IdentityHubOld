@@ -1,5 +1,8 @@
 package org.eclipse.dataspaceconnector.dtos;
 
+/**
+ * Describes status of the request done by calling the identity-hub endpoint.
+ */
 abstract class Status {
     private final int code;
     private final String detail;

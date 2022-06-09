@@ -16,6 +16,9 @@ import java.util.stream.Collectors;
 @Produces({"application/json"})
 @Consumes({"application/json"})
 @Path("/identity-hub")
+/**
+ * Identity Hub controller, exposing an endpoint to process <a href="https://identity.foundation/decentralized-web-node/spec/#request-objects">Request Objects</a>.
+ */
 public class IdentityHubController {
 
     private final MessageProcessorFactory messageProcessorFactory;
