@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.util.Objects;
+
 @JsonDeserialize(builder = VerifiableCredential.Builder.class)
 public class VerifiableCredential implements HubObject {
     String id;
@@ -33,6 +35,7 @@ public class VerifiableCredential implements HubObject {
         }
 
         public VerifiableCredential build() {
+            Objects.requireNonNull(verifiableCredential.id, "VerifiableCredential must contain id property.");
             return verifiableCredential;
         }
     }

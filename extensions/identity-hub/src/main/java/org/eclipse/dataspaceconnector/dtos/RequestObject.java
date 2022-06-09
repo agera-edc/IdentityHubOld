@@ -70,8 +70,8 @@ public class RequestObject {
         }
 
         public RequestObject build() {
-            Objects.requireNonNull(requestObject.getRequestId(), "RequestObject builder missing requestId property.");
-            Objects.requireNonNull(requestObject.getTarget(), "RequestObject builder missing target property.");
+            Objects.requireNonNull(requestObject.getRequestId(), "RequestObject must contain  requestId property.");
+            Objects.requireNonNull(requestObject.getTarget(), "RequestObject must contain target property.");
             return requestObject;
         }
     }
