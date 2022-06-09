@@ -60,7 +60,7 @@ public class MessageRequestObject {
 
 
         public MessageRequestObject build() {
-            Objects.requireNonNull(messageRequestObject.getDescriptor(), "MessageRequestObject builder missing descriptor property.");
+            Objects.requireNonNull(messageRequestObject.getDescriptor(), "MessageRequestObject must contain a descriptor property.");
             return messageRequestObject;
         }
     }
