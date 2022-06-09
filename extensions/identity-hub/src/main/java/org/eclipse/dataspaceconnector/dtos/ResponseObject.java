@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#response-objects">Response Object documentation</a>
@@ -63,6 +64,7 @@ public class ResponseObject {
         }
 
         public ResponseObject build() {
+            Objects.requireNonNull(responseObject.requestId, "ResponseObject must contain requestId property.");
             return responseObject;
         }
     }
