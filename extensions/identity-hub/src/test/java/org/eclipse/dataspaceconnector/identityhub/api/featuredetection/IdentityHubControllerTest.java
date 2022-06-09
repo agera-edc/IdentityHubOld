@@ -60,9 +60,10 @@ public class IdentityHubControllerTest {
         var requestId = FAKER.internet().uuid();
         var target = FAKER.internet().url();
         var nonce = FAKER.internet().uuid();
+        var verifiableCredentialId = FAKER.internet().uuid();
 
         ObjectMapper mapper = new ObjectMapper();
-        VerifiableCredential credential = VerifiableCredential.Builder.newInstance().build();
+        VerifiableCredential credential = VerifiableCredential.Builder.newInstance().id(verifiableCredentialId).build();
         String data = new String(Base64.encode(mapper.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8)));
 
         RequestObject requestObject = RequestObject.Builder.newInstance()
