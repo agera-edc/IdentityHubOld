@@ -13,7 +13,9 @@ import java.util.Objects;
 public class Descriptor {
     private String method;
     private String nonce;
+    // TODO: if data is available, this field should contain stringified Version 1 CID of the DAG PB encoded data.
     private String dataCid;
+    // TODO: if data is available, check that format is application/vc+ldp as it is the only one supported at the moment
     private String dataFormat;
 
     private Descriptor() {
