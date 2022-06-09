@@ -2,7 +2,12 @@ package org.eclipse.dataspaceconnector.service;
 
 import org.eclipse.dataspaceconnector.store.IdentityHubStore;
 
+import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
+import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
+import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
+
 public class MessageProcessorFactory {
+
     private final IdentityHubStore identityHubStore;
 
     public MessageProcessorFactory(IdentityHubStore identityHubStore) {
@@ -11,11 +16,12 @@ public class MessageProcessorFactory {
 
     public MessageProcessor create(String method) {
         switch (method) {
-            // TODO: Create an enum
-            case "CollectionsQuery":
+            case COLLECTIONS_QUERY:
                 return new CollectionsQueryProcessor(identityHubStore);
-            case "CollectionsWrite":
+            case COLLECTIONS_WRITE:
                 return new CollectionsWriteProcessor(identityHubStore);
+            case FEATURE_DETECTION_READ:
+                return new FeatureDetectionReadProcessor();
             default:
                 return new InterfaceNotImplementedProcessor();
         }

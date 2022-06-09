@@ -19,6 +19,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 
 @ExtendWith(EdcExtension.class)
 public class IdentityHubControllerTest {
@@ -82,12 +83,42 @@ public class IdentityHubControllerTest {
             .body(requestObject)
             .post()
         .then()
-            .statusCode(200).log().all()
+            .statusCode(200)
             .body("requestId", equalTo(requestId))
             .body("replies", hasSize(1))
             .body("replies[0].status.code", equalTo(200))
             .body("replies[0].status.detail", equalTo("The message was successfully processed"))
             .body("replies[0].entries", hasSize(0));
+    }
+
+    @Test
+    void featureDetection() {
+        var requestId = FAKER.internet().uuid();
+        var target = FAKER.internet().url();
+        var nonce = FAKER.internet().uuid();
+
+        var requestObject = RequestObject.Builder.newInstance()
+                .requestId(requestId)
+                .target(target)
+                .addMessageRequestObject(
+                        MessageRequestObject.Builder.newInstance()
+                                .descriptor(Descriptor.Builder.newInstance()
+                                        .method("FeatureDetectionRead")
+                                        .nonce(nonce)
+                                        .build())
+                                .build())
+                .build();
+
+        baseRequest()
+            .body(requestObject)
+            .post()
+        .then()
+            .statusCode(200)
+            .body("requestId", equalTo(requestId))
+            .body("replies", hasSize(1))
+            .body("replies[0].entries", hasSize(1))
+            .body("replies[0].entries[0].interfaces.collections['CollectionsQuery']", is(true))
+            .body("replies[0].entries[0].interfaces.collections['CollectionsWrite']", is(true));
     }
 
     @Test

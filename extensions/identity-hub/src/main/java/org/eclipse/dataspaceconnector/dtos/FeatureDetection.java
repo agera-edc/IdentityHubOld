@@ -4,30 +4,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * Feature Detection object produced by a compliant decentralized Web Node.
  * See: <a href="https://identity.foundation/decentralized-web-node/spec/#feature-detection">Feature detection identity foundation documentation.</a>
  */
 @JsonDeserialize(builder = FeatureDetection.Builder.class)
-public class FeatureDetection {
-    private static final String type = "FeatureDetection";
+public class FeatureDetection implements HubObject {
 
-    private List<WebNodeInterface> interfaces;
+    private static final String TYPE = "FeatureDetection";
+    private WebNodeInterfaces interfaces;
 
     public String getType() {
-        return type;
+        return TYPE;
     }
 
-    public List<WebNodeInterface> getInterfaces() {
-        return Collections.unmodifiableList(interfaces);
+    public WebNodeInterfaces getInterfaces() {
+        return interfaces;
     }
 
     private FeatureDetection() {
-        interfaces = new ArrayList<>();
     }
 
     @JsonPOJOBuilder(withPrefix = "")
@@ -43,8 +38,8 @@ public class FeatureDetection {
             return new FeatureDetection.Builder();
         }
 
-        public FeatureDetection.Builder interfaces(List<WebNodeInterface> interfaces) {
-            featureDetection.interfaces.addAll(interfaces);
+        public FeatureDetection.Builder interfaces(WebNodeInterfaces interfaces) {
+            featureDetection.interfaces = interfaces;
             return this;
         }
 
