@@ -1,20 +1,39 @@
 package org.eclipse.dataspaceconnector.dtos;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonDeserialize(builder = VerifiableCredential.Builder.class)
 public class VerifiableCredential implements HubObject {
-    String dummyField;
+    String id;
 
-    public String getDummyField() {
-        return dummyField;
+    public String getId() {
+        return id;
+    }
+    private VerifiableCredential() {
     }
 
-    public void setDummyField(String dummyField) {
-        this.dummyField = dummyField;
-    }
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class Builder {
+        VerifiableCredential verifiableCredential;
 
-    public VerifiableCredential() {
-    }
+        private Builder() {
+            verifiableCredential = new VerifiableCredential();
+        }
 
-    public VerifiableCredential(String dummyField) {
-        this.dummyField = dummyField;
+        @JsonCreator
+        public static Builder newInstance() {
+            return new Builder();
+        }
+
+        public Builder id(String id) {
+            verifiableCredential.id = id;
+            return this;
+        }
+
+        public VerifiableCredential build() {
+            return verifiableCredential;
+        }
     }
 }

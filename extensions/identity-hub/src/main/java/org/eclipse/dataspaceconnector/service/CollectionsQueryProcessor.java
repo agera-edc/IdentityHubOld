@@ -11,7 +11,7 @@ public class CollectionsQueryProcessor implements MessageProcessor {
 
     @Override
     public MessageResultObject process(byte[] data) {
-        List<HubObject> entries = List.of(new VerifiableCredential(), new VerifiableCredential());
+        List<HubObject> entries = List.of(VerifiableCredential.Builder.newInstance().build(), VerifiableCredential.Builder.newInstance().build());
         return MessageResultObject.Builder.newInstance()
                 .messageId("messageId")
                 .status(MessageStatus.OK)
