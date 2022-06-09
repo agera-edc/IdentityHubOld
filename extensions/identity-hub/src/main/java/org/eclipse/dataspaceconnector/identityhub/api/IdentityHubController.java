@@ -48,7 +48,7 @@ public class IdentityHubController {
     private MessageResponseObject processMessage(MessageRequestObject messageRequestObject) {
         String method = messageRequestObject.getDescriptor().getMethod();
         MessageProcessor processor = messageProcessorFactory.create(method);
-        byte[] bytes = ofNullable(messageRequestObject.getData()).orElse("").getBytes(StandardCharsets.UTF_8);
+        byte[] bytes = messageRequestObject.getData();
         return processor.process(bytes);
     }
 

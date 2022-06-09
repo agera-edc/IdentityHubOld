@@ -65,7 +65,7 @@ public class IdentityHubControllerTest {
 
         ObjectMapper mapper = new ObjectMapper();
         VerifiableCredential credential = VerifiableCredential.Builder.newInstance().id(verifiableCredentialId).build();
-        String data = new String(Base64.encode(mapper.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8)));
+        byte[] data = Base64.encode(mapper.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8));
 
         RequestObject requestObject = RequestObject.Builder.newInstance()
             .requestId(requestId)

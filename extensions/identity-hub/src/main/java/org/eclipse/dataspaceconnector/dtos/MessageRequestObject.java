@@ -12,13 +12,12 @@ import java.util.Objects;
 @JsonDeserialize(builder = MessageRequestObject.Builder.class)
 public class MessageRequestObject {
     private Descriptor descriptor;
-    // TODO: Change data type to byte[]
-    private String data;
+    private byte[] data;
 
     public MessageRequestObject() {
     }
 
-    public MessageRequestObject(Descriptor descriptor, String data) {
+    public MessageRequestObject(Descriptor descriptor, byte[] data) {
         this.descriptor = descriptor;
         this.data = data;
     }
@@ -27,7 +26,7 @@ public class MessageRequestObject {
         return descriptor;
     }
 
-    public String getData() {
+    public byte[] getData() {
         return data;
     }
 
@@ -53,7 +52,7 @@ public class MessageRequestObject {
             return this;
         }
 
-        public MessageRequestObject.Builder data(String data) {
+        public MessageRequestObject.Builder data(byte[] data) {
             messageRequestObject.data = data;
             return this;
         }

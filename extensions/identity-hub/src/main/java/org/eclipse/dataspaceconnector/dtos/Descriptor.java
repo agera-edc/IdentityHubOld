@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * See <a href="https://identity.foundation/decentralized-web-node/spec/#message-descriptors">message descriptor documentation</a>.
  */
-// TODO: Add Builder validation in all builders build() call
+
 @JsonDeserialize(builder = Descriptor.Builder.class)
 public class Descriptor {
     private String method;
