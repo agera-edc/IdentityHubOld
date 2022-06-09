@@ -22,10 +22,7 @@ public class MessageResponseObject {
     // Temporary message id value.
     public static String MESSAGE_ID_VALUE = "messageId";
 
-    private MessageResponseObject(String messageId, MessageStatus status, List<HubObject> entries) {
-        this.messageId = messageId;
-        this.status = status;
-        this.entries = entries;
+    private MessageResponseObject() {
     }
 
     public String getMessageId() {
@@ -45,7 +42,7 @@ public class MessageResponseObject {
         private MessageResponseObject messageResponseObject;
 
         private Builder() {
-            messageResponseObject = new MessageResponseObject("", null, List.of());
+            messageResponseObject = new MessageResponseObject();
         }
 
         @JsonCreator()

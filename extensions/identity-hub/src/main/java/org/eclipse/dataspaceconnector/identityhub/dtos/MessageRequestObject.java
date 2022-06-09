@@ -14,12 +14,7 @@ public class MessageRequestObject {
     private Descriptor descriptor;
     private byte[] data;
 
-    public MessageRequestObject() {
-    }
-
-    public MessageRequestObject(Descriptor descriptor, byte[] data) {
-        this.descriptor = descriptor;
-        this.data = data;
+    private MessageRequestObject() {
     }
 
     public Descriptor getDescriptor() {

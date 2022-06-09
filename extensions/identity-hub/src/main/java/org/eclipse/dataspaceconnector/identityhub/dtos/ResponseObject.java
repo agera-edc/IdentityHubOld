@@ -17,10 +17,7 @@ public class ResponseObject {
     private RequestStatus status;
     private List<MessageResponseObject> replies;
 
-    private ResponseObject(String requestId, RequestStatus status, List<MessageResponseObject> replies) {
-        this.requestId = requestId;
-        this.status = status;
-        this.replies = replies;
+    private ResponseObject() {
     }
 
     public String getRequestId() {
@@ -40,7 +37,7 @@ public class ResponseObject {
         ResponseObject responseObject;
 
         private Builder() {
-            responseObject = new ResponseObject("", null, List.of());
+            responseObject = new ResponseObject();
         }
 
         @JsonCreator

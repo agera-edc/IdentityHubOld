@@ -12,12 +12,13 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = VerifiableCredential.Builder.class)
 public class VerifiableCredential implements HubObject {
-    String id;
+    private String id;
+
+    private VerifiableCredential() {
+    }
 
     public String getId() {
         return id;
-    }
-    private VerifiableCredential() {
     }
 
     @JsonPOJOBuilder(withPrefix = "")

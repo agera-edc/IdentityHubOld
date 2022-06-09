@@ -24,7 +24,7 @@ public class WebNodeInterfaces {
     private final Map<String, Boolean> permissions = new HashMap<>();
     private final Map<String, Boolean> messaging = new HashMap<>();
 
-    public WebNodeInterfaces() {
+    private WebNodeInterfaces() {
     }
 
     public Map<String, Boolean> getCollections() {
