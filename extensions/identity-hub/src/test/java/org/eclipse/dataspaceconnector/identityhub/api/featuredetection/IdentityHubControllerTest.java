@@ -52,7 +52,7 @@ public class IdentityHubControllerTest {
             .body("replies", hasSize(1))
             .body("replies[0].status.code", equalTo(200))
             .body("replies[0].status.detail", equalTo("The message was successfully processed"))
-            .body("replies[0].entries", hasSize(2));
+            .body("replies[0].entries", hasSize(0));
     }
 
     @Test

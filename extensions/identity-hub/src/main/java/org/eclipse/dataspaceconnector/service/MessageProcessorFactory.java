@@ -13,7 +13,7 @@ public class MessageProcessorFactory {
         switch (method) {
             // TODO: Create an enum
             case "CollectionsQuery":
-                return new CollectionsQueryProcessor();
+                return new CollectionsQueryProcessor(identityHubStore);
             case "CollectionsWrite":
                 return new CollectionsWriteProcessor(identityHubStore);
             default:
