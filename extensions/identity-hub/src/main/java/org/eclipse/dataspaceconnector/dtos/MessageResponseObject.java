@@ -18,6 +18,10 @@ public class MessageResponseObject {
     private MessageStatus status;
     private List<HubObject> entries;
 
+    // TODO: Figure out what messageId is supposed to be.
+    // Temporary message id value.
+    public static String MESSAGE_ID_VALUE = "messageId";
+
     private MessageResponseObject(String messageId, MessageStatus status, List<HubObject> entries) {
         this.messageId = messageId;
         this.status = status;

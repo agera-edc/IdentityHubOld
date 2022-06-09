@@ -4,6 +4,7 @@ import org.eclipse.dataspaceconnector.dtos.*;
 
 import java.util.List;
 
+import static org.eclipse.dataspaceconnector.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
 import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
 import static org.eclipse.dataspaceconnector.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
 
@@ -20,7 +21,7 @@ public class FeatureDetectionReadProcessor implements MessageProcessor {
                 ).build()
         );
         return MessageResponseObject.Builder.newInstance()
-                .messageId("messageId")
+                .messageId(MESSAGE_ID_VALUE)
                 .status(MessageStatus.OK)
                 .entries(entries)
                 .build();
