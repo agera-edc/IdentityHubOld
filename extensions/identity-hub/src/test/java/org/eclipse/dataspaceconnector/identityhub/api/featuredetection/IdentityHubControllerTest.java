@@ -100,6 +100,20 @@ public class IdentityHubControllerTest {
             .body("replies[0].status.detail", equalTo("The interface method is not implemented"));
     }
 
+    @Test
+    void malformedMessage() {
+        byte[] data = "invalid base64".getBytes(StandardCharsets.UTF_8);
+        baseRequest()
+            .body(createRequestObject(COLLECTIONS_WRITE, data))
+            .post()
+        .then()
+            .statusCode(200)
+            .body("requestId", equalTo(REQUEST_ID))
+            .body("replies", hasSize(1))
+            .body("replies[0].status.code", equalTo(400))
+            .body("replies[0].status.detail", equalTo("The message was malformed or improperly constructed"));
+    }
+
     private RequestSpecification baseRequest() {
         return given()
             .baseUri(API_URL)
