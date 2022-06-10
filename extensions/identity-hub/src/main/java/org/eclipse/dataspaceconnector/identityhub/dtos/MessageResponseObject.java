@@ -15,13 +15,14 @@ import java.util.Objects;
  */
 @JsonDeserialize(builder = MessageResponseObject.Builder.class)
 public class MessageResponseObject {
-    private String messageId;
-    private MessageStatus status;
-    private List<HubObject> entries = new ArrayList<>();
 
     // TODO: implement messageId as a stringified Version 1 CID of the associated message (as per spec)
     // Temporary message id value.
-    public static String MESSAGE_ID_VALUE = "messageId";
+    public static final String MESSAGE_ID_VALUE = "messageId";
+
+    private String messageId;
+    private MessageStatus status;
+    private List<HubObject> entries = new ArrayList<>();
 
     private MessageResponseObject() {
     }
