@@ -9,6 +9,7 @@ import java.util.Collection;
  * In memory store of Hub Objects.
  */
 // TODO: Handle concurrency
+// TODO: use EDC defaulting mechanism as in DefaultServicesExtension
 public class IdentityHubInMemoryStore implements IdentityHubStore {
 
     Collection<HubObject> hubObjects;
