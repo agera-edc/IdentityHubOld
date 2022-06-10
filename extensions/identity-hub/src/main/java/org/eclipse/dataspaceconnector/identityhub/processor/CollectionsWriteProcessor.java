@@ -9,7 +9,6 @@ import org.eclipse.dataspaceconnector.identityhub.dtos.VerifiableCredential;
 import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 
 import java.util.Base64;
-import java.util.UUID;
 
 import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
 
@@ -32,7 +31,7 @@ public class CollectionsWriteProcessor implements MessageProcessor {
             var credential = mapper.readValue(decodedData, VerifiableCredential.class);
             identityHubStore.add(credential);
             return MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.OK).build();
-        } catch (JsonProcessingException | IllegalArgumentException e) {
+        } catch (JsonProcessingException e) {
             return MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.MALFORMED_MESSAGE).build();
         }
     }
