@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.identityhub.service;
+package org.eclipse.dataspaceconnector.identityhub.processor;
 
 import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 
@@ -7,7 +7,7 @@ import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.
 import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.FEATURE_DETECTION_READ;
 
 /**
- * Factory used to provide the right MessageProcessor according to the method.
+ * Factory used to provide the right MessageProcessor according to the message method.
  */
 public class MessageProcessorFactory {
 

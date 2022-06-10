@@ -1,6 +1,6 @@
 package org.eclipse.dataspaceconnector.identityhub.api;
 
-import org.eclipse.dataspaceconnector.identityhub.service.MessageProcessorFactory;
+import org.eclipse.dataspaceconnector.identityhub.processor.MessageProcessorFactory;
 import org.eclipse.dataspaceconnector.spi.WebService;
 import org.eclipse.dataspaceconnector.spi.system.Inject;
 import org.eclipse.dataspaceconnector.spi.system.ServiceExtension;

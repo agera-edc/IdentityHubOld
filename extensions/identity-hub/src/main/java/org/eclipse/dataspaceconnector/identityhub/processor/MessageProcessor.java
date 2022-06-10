@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.identityhub.service;
+package org.eclipse.dataspaceconnector.identityhub.processor;
 
 import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
 import org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces;

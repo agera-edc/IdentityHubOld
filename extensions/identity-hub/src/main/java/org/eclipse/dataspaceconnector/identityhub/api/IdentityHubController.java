@@ -10,8 +10,8 @@ import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
 import org.eclipse.dataspaceconnector.identityhub.dtos.RequestObject;
 import org.eclipse.dataspaceconnector.identityhub.dtos.RequestStatus;
 import org.eclipse.dataspaceconnector.identityhub.dtos.ResponseObject;
-import org.eclipse.dataspaceconnector.identityhub.service.MessageProcessor;
-import org.eclipse.dataspaceconnector.identityhub.service.MessageProcessorFactory;
+import org.eclipse.dataspaceconnector.identityhub.processor.MessageProcessor;
+import org.eclipse.dataspaceconnector.identityhub.processor.MessageProcessorFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;

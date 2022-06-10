@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.identityhub.service;
+package org.eclipse.dataspaceconnector.identityhub.processor;
 
 import org.eclipse.dataspaceconnector.identityhub.dtos.FeatureDetection;
 import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
@@ -12,6 +12,9 @@ import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObj
 import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_QUERY;
 import static org.eclipse.dataspaceconnector.identityhub.dtos.WebNodeInterfaces.COLLECTIONS_WRITE;
 
+/**
+ * Processor of "FeatureDetectionRead" messages
+ */
 public class FeatureDetectionReadProcessor implements MessageProcessor {
 
     @Override
