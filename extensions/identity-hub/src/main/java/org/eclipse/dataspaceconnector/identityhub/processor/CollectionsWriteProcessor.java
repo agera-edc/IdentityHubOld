@@ -11,6 +11,8 @@ import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 import java.util.Base64;
 import java.util.UUID;
 
+import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
+
 /**
  * Processor of "CollectionsWrite" messages, in order to write {@link HubObject}s into the {@link IdentityHubStore}.
  */
@@ -20,20 +22,18 @@ public class CollectionsWriteProcessor implements MessageProcessor {
     private ObjectMapper mapper;
 
     public CollectionsWriteProcessor(IdentityHubStore identityHubStore) {
-
         this.identityHubStore = identityHubStore;
         this.mapper = new ObjectMapper();
     }
 
     public MessageResponseObject process(byte[] data) {
-        var requestId = UUID.randomUUID().toString();
         try {
             var decodedData = new String(Base64.getUrlDecoder().decode(data));
             var credential = mapper.readValue(decodedData, VerifiableCredential.class);
             identityHubStore.add(credential);
-            return MessageResponseObject.Builder.newInstance().messageId(requestId).status(MessageStatus.OK).build();
+            return MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.OK).build();
         } catch (JsonProcessingException | IllegalArgumentException e) {
-            return MessageResponseObject.Builder.newInstance().messageId(requestId).status(MessageStatus.MALFORMED_MESSAGE).build();
+            return MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.MALFORMED_MESSAGE).build();
         }
     }
 }
