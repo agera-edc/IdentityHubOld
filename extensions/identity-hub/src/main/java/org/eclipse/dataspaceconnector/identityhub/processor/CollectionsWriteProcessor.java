@@ -31,7 +31,7 @@ public class CollectionsWriteProcessor implements MessageProcessor {
             var credential = mapper.readValue(decodedData, VerifiableCredential.class);
             identityHubStore.add(credential);
             return MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.OK).build();
-        } catch (JsonProcessingException e) {
+        } catch (JsonProcessingException | IllegalArgumentException e) {
             return MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.MALFORMED_MESSAGE).build();
         }
     }

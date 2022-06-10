@@ -43,12 +43,28 @@ public class CollectionsWriteProcessorTest {
     }
 
     @Test
-    void writeCredentialsJsonProcessingException() {
+    void writeCredentialsWrongJsonFormat() {
         // Arrange
         IdentityHubStore identityHubStore = new IdentityHubInMemoryStore();
         CollectionsWriteProcessor writeProcessor = new CollectionsWriteProcessor(identityHubStore);
         var malformedJson = "{";
         byte[] data = Base64.encode(malformedJson.getBytes(StandardCharsets.UTF_8));
+        var expectedResult = MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.MALFORMED_MESSAGE).build();
+
+        // Act
+        var result = writeProcessor.process(data);
+
+        // Assert
+        assertThat(result).usingRecursiveComparison().isEqualTo(expectedResult);
+        assertThat(identityHubStore.getAll()).isEmpty();
+    }
+
+    @Test
+    void writeCredentialsInvalidBase64() {
+        // Arrange
+        IdentityHubStore identityHubStore = new IdentityHubInMemoryStore();
+        CollectionsWriteProcessor writeProcessor = new CollectionsWriteProcessor(identityHubStore);
+        byte[] data = "invalid base64".getBytes(StandardCharsets.UTF_8);
         var expectedResult = MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.MALFORMED_MESSAGE).build();
 
         // Act
