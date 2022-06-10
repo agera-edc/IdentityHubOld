@@ -10,6 +10,7 @@ import java.util.Objects;
  * VerifiableCredential is a supported format that can be specified as the data associated with MessageRequestObject.
  * application/vc+ldp - the data is a JSON-LD formatted <a href="https://www.w3.org/TR/vc-data-model/">W3C Verifiable Credential</a>.
  */
+// TODO: implement Verifiable Credential model
 @JsonDeserialize(builder = VerifiableCredential.Builder.class)
 public class VerifiableCredential implements HubObject {
     private String id;
