@@ -8,6 +8,7 @@ import java.util.Collection;
 /**
  * In memory store of Hub Objects.
  */
+// TODO: Add tests when the logic to store objects is defined
 // TODO: Handle concurrency
 // TODO: use EDC defaulting mechanism as in DefaultServicesExtension
 public class IdentityHubInMemoryStore implements IdentityHubStore {
