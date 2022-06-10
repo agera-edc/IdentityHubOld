@@ -49,21 +49,8 @@ public class IdentityHubControllerTest {
 
     private void pushVerifiableCredential(VerifiableCredential credential) throws IOException {
         byte[] data = Base64.encode(OBJECT_MAPPER.writeValueAsString(credential).getBytes(StandardCharsets.UTF_8));
-
-        RequestObject requestObject = RequestObject.Builder.newInstance()
-            .requestId(REQUEST_ID)
-            .target(TARGET)
-            .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
-                .descriptor(Descriptor.Builder.newInstance()
-                    .method(COLLECTIONS_WRITE)
-                    .nonce(NONCE)
-                    .build())
-                .data(data)
-                .build())
-            .build();
-
         baseRequest()
-            .body(requestObject)
+            .body(createRequestObject(COLLECTIONS_WRITE, data))
             .post()
         .then()
             .statusCode(200)
@@ -74,19 +61,8 @@ public class IdentityHubControllerTest {
     }
 
     private List<VerifiableCredential> queryVerifiableCredentials() {
-        RequestObject requestObject = RequestObject.Builder.newInstance()
-            .requestId(REQUEST_ID)
-            .target(TARGET)
-            .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
-                .descriptor(Descriptor.Builder.newInstance()
-                    .method(COLLECTIONS_QUERY)
-                    .nonce(NONCE)
-                    .build())
-                .build())
-            .build();
-
         return baseRequest()
-            .body(requestObject)
+            .body(createRequestObject(COLLECTIONS_QUERY))
             .post()
         .then()
             .statusCode(200)
@@ -99,28 +75,12 @@ public class IdentityHubControllerTest {
 
     @Test
     void featureDetection() {
-        var requestId = FAKER.internet().uuid();
-        var target = FAKER.internet().url();
-        var nonce = FAKER.internet().uuid();
-
-        var requestObject = RequestObject.Builder.newInstance()
-            .requestId(requestId)
-            .target(target)
-            .addMessageRequestObject(
-                MessageRequestObject.Builder.newInstance()
-                    .descriptor(Descriptor.Builder.newInstance()
-                        .method(FEATURE_DETECTION_READ)
-                        .nonce(nonce)
-                        .build())
-                    .build())
-            .build();
-
         baseRequest()
-            .body(requestObject)
+            .body(createRequestObject(FEATURE_DETECTION_READ))
             .post()
         .then()
             .statusCode(200)
-            .body("requestId", equalTo(requestId))
+            .body("requestId", equalTo(REQUEST_ID))
             .body("replies", hasSize(1))
             .body("replies[0].entries", hasSize(1))
             .body("replies[0].entries[0].interfaces.collections['CollectionsQuery']", is(true))
@@ -129,20 +89,8 @@ public class IdentityHubControllerTest {
 
     @Test
     void methodNotImplemented() {
-        var requestObject = RequestObject.Builder.newInstance()
-            .requestId(REQUEST_ID)
-            .target(TARGET)
-            .addMessageRequestObject(
-                MessageRequestObject.Builder.newInstance()
-                    .descriptor(Descriptor.Builder.newInstance()
-                        .method("Not supported")
-                        .nonce(NONCE)
-                        .build())
-                    .build())
-            .build();
-
         baseRequest()
-            .body(requestObject)
+            .body(createRequestObject("Not supported method"))
             .post()
         .then()
             .statusCode(200)
@@ -158,5 +106,23 @@ public class IdentityHubControllerTest {
             .basePath("/identity-hub")
             .contentType(JSON)
         .when();
+    }
+
+    private RequestObject createRequestObject(String method) {
+        return createRequestObject(method, null);
+    }
+
+    private RequestObject createRequestObject(String method, byte[] data) {
+        return RequestObject.Builder.newInstance()
+            .requestId(REQUEST_ID)
+            .target(TARGET)
+            .addMessageRequestObject(MessageRequestObject.Builder.newInstance()
+                .descriptor(Descriptor.Builder.newInstance()
+                    .method(method)
+                    .nonce(NONCE)
+                    .build())
+                .data(data)
+                .build())
+            .build();
     }
 }
