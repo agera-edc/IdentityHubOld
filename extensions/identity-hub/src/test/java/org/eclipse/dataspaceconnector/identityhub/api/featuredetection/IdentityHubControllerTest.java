@@ -32,7 +32,7 @@ public class IdentityHubControllerTest {
     private static final String API_URL = "http://localhost:8181/api";
     private static final Faker FAKER = new Faker();
     private static final String VERIFIABLE_CREDENTIAL_ID = FAKER.internet().uuid();
-    private static final String NONCE = FAKER.internet().uuid();
+    private static final String NONCE = FAKER.lorem().characters(32);
     private static final String TARGET = FAKER.internet().url();
     private static final String REQUEST_ID = FAKER.internet().uuid();
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
