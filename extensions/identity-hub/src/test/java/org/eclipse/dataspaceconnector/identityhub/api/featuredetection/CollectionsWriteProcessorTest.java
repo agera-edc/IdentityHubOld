@@ -47,7 +47,8 @@ public class CollectionsWriteProcessorTest {
         // Arrange
         IdentityHubStore identityHubStore = new IdentityHubInMemoryStore();
         CollectionsWriteProcessor writeProcessor = new CollectionsWriteProcessor(identityHubStore);
-        byte[] data = Base64.encode("{".getBytes(StandardCharsets.UTF_8));
+        var malformedJson = "{";
+        byte[] data = Base64.encode(malformedJson.getBytes(StandardCharsets.UTF_8));
         var expectedResult = MessageResponseObject.Builder.newInstance().messageId(MESSAGE_ID_VALUE).status(MessageStatus.MALFORMED_MESSAGE).build();
 
         // Act
