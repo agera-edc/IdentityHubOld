@@ -13,6 +13,7 @@ import java.util.Objects;
 public class RequestObject {
 
     private String requestId;
+    // TODO: must be the Decentralized Identifier base URI of the DID-relative URL
     private String target;
     private List<MessageRequestObject> messages = new ArrayList<>();
 
