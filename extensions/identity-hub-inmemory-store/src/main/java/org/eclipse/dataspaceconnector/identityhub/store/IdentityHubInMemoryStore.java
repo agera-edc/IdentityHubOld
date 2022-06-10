@@ -13,11 +13,7 @@ import java.util.Collection;
 // TODO: use EDC defaulting mechanism as in DefaultServicesExtension
 public class IdentityHubInMemoryStore implements IdentityHubStore {
 
-    Collection<HubObject> hubObjects;
-
-    public IdentityHubInMemoryStore() {
-        this.hubObjects = new ArrayList<>();
-    }
+    private final Collection<HubObject> hubObjects = new ArrayList<>();
 
     @Override
     public Collection<HubObject> getAll() {
