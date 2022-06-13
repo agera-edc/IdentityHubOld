@@ -4,6 +4,7 @@ import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * In memory store of Hub Objects.
@@ -16,7 +17,7 @@ public class IdentityHubInMemoryStore implements IdentityHubStore {
 
     @Override
     public Collection<HubObject> getAll() {
-        return hubObjects;
+        return List.copyOf(hubObjects);
     }
 
     @Override

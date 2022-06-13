@@ -23,7 +23,7 @@ public class CollectionsQueryProcessor implements MessageProcessor {
 
     @Override
     public MessageResponseObject process(byte[] data) {
-        List<HubObject> entries = new ArrayList<>(identityHubStore.getAll());
+        List<HubObject> entries = (List<HubObject>) identityHubStore.getAll();
         return MessageResponseObject.Builder.newInstance()
                 .messageId(MESSAGE_ID_VALUE)
                 .status(MessageStatus.OK)
