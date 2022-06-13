@@ -1,1 +1,2 @@
 org.eclipse.dataspaceconnector.identityhub.api.IdentityHubExtension
+org.eclipse.dataspaceconnector.identityhub.store.IdentityHubInMemoryStoreExtension
