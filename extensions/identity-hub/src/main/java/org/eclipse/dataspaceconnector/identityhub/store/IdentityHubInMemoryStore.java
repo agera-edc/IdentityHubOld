@@ -10,7 +10,6 @@ import java.util.Collection;
  */
 // TODO: Add tests when the logic to store objects is defined
 // TODO: Handle concurrency
-// TODO: use EDC defaulting mechanism as in DefaultServicesExtension
 public class IdentityHubInMemoryStore implements IdentityHubStore {
 
     private final Collection<HubObject> hubObjects = new ArrayList<>();
