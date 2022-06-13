@@ -8,7 +8,7 @@ import java.util.List;
 import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject.MESSAGE_ID_VALUE;
 
 /**
- * Default message processor in case of a non supported interface is provided
+ * Default message processor when a non-supported interface is provided
  */
 public class InterfaceNotImplementedProcessor implements MessageProcessor {
 
