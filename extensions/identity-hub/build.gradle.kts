@@ -27,6 +27,7 @@ dependencies {
     implementation("${edcGroup}:core:${edcVersion}")
     implementation("${edcGroup}:http:${edcVersion}")
     implementation(project(":extensions:identity-hub-store-spi"))
+    implementation("${edcGroup}:common-util:${edcVersion}")
 
     testImplementation(project(":rest-client"))
     testImplementation("${edcGroup}:junit-extension:${edcVersion}:test-fixtures")
