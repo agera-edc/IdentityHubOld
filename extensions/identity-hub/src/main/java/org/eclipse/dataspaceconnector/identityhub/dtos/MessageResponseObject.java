@@ -3,6 +3,7 @@ package org.eclipse.dataspaceconnector.identityhub.dtos;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import org.eclipse.dataspaceconnector.identityhub.store.HubObject;
 
 import java.util.ArrayList;
 import java.util.Collections;

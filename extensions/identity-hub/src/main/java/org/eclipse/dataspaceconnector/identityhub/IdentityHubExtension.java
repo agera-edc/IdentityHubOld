@@ -1,8 +1,11 @@
-package org.eclipse.dataspaceconnector.identityhub.api;
+package org.eclipse.dataspaceconnector.identityhub;
 
+import org.eclipse.dataspaceconnector.identityhub.api.IdentityHubController;
 import org.eclipse.dataspaceconnector.identityhub.processor.MessageProcessorFactory;
+import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubInMemoryStore;
 import org.eclipse.dataspaceconnector.spi.WebService;
 import org.eclipse.dataspaceconnector.spi.system.Inject;
+import org.eclipse.dataspaceconnector.spi.system.Provider;
 import org.eclipse.dataspaceconnector.spi.system.ServiceExtension;
 import org.eclipse.dataspaceconnector.spi.system.ServiceExtensionContext;
 import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
@@ -22,5 +25,10 @@ public class IdentityHubExtension implements ServiceExtension {
         var methodProcessorFactory = new MessageProcessorFactory(identityHubStore);
         var identityHubController = new IdentityHubController(methodProcessorFactory);
         webService.registerResource(identityHubController);
+    }
+
+    @Provider(isDefault = true)
+    public IdentityHubStore identityHubStore() {
+        return new IdentityHubInMemoryStore();
     }
 }

@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.identityhub.dtos;
+package org.eclipse.dataspaceconnector.identityhub.store;
 
 /**
  * data associated with MessageRequestObject.

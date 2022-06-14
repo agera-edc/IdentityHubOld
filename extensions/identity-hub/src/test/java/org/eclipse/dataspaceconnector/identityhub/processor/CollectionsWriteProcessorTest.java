@@ -1,4 +1,4 @@
-package org.eclipse.dataspaceconnector.identityhub.api.featuredetection;
+package org.eclipse.dataspaceconnector.identityhub.processor;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

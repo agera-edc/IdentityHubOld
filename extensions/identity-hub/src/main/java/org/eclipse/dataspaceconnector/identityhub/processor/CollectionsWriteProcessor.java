@@ -2,10 +2,10 @@ package org.eclipse.dataspaceconnector.identityhub.processor;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.eclipse.dataspaceconnector.identityhub.dtos.HubObject;
 import org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObject;
 import org.eclipse.dataspaceconnector.identityhub.dtos.MessageStatus;
 import org.eclipse.dataspaceconnector.identityhub.dtos.VerifiableCredential;
+import org.eclipse.dataspaceconnector.identityhub.store.HubObject;
 import org.eclipse.dataspaceconnector.identityhub.store.IdentityHubStore;
 
 import java.util.Base64;
@@ -17,8 +17,8 @@ import static org.eclipse.dataspaceconnector.identityhub.dtos.MessageResponseObj
  */
 public class CollectionsWriteProcessor implements MessageProcessor {
 
-    private IdentityHubStore identityHubStore;
-    private ObjectMapper mapper;
+    private final IdentityHubStore identityHubStore;
+    private final ObjectMapper mapper;
 
     public CollectionsWriteProcessor(IdentityHubStore identityHubStore) {
         this.identityHubStore = identityHubStore;
